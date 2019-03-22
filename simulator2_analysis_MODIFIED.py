@@ -237,12 +237,23 @@ def sim_regression_with_randomized_fragment(Clist, fragment_variance, fragment_l
     cimean = np.array(ordered_ci).mean() * 2
     (intercept1 - cimean)
 
-
 Clist = [70, 355]
 READ_LENGTH = 250
 fragment_variance = 150
-sim_times = 100
+sim_times = 20
 fragment_length_list = [400, 550, 700]
+
+fragment_length_mean = 550
+array_length_sim_reg = 1500
+beta = sim_regression_with_randomized_fragment(
+    Clist, fragment_variance,
+    fragment_length_mean, sim_times,
+    100,#np.int32(sim_times / 4) if sim_times > 60 else 30,
+    array_length_sim_reg, READ_LENGTH,
+    np.int32(READ_LENGTH * 0.75), True
+)
+
+exit(0)
 
 for C in Clist:
     runsim([C],
@@ -253,16 +264,6 @@ for C in Clist:
            )
 
 exit(0)
-
-fragment_length_mean = 550
-array_length_sim_reg = 1000
-beta = sim_regression_with_randomized_fragment(
-    Clist, fragment_variance,
-    fragment_length_mean, sim_times,
-    np.int32(sim_times / 4) if sim_times > 60 else 30,
-    array_length_sim_reg, READ_LENGTH,
-    np.int32(READ_LENGTH * 0.75), True
-)
 
 # Fragment size from left end to right end; read lengths [100, 150, 250]; separation of coverages; increase number of simulations to 100;
 #       allow fragment length to be smaller than 2R; fragment lengths 400-700 (550~150);

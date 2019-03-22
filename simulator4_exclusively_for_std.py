@@ -2,6 +2,7 @@ import numpy as np
 from numpy import random as rand
 import matplotlib.pyplot as plt
 from scipy.stats import linregress
+from scipy.signal import wiener
 
 def find_intersections(mAlist, sAlist, Alist):
     adjacency_matrix = np.zeros(shape=(len(mAlist), len(mAlist)))
@@ -90,15 +91,23 @@ def sim_adv(A, R, F, sim_times, C, frag_mean, frag_std):
     # Return all useful information
     return mean_return, std_return
 
+def print_array(zz):
+    string_agg = "np.array(["
+    for z in zz:
+        string_agg += str(np.round(z, decimals=3)) + ","
+    string_agg += "])"
+    return string_agg
+
+
 mlist = list()
 slist = list()
 tlist = list()
 mdict = {}
 
 sim_times = 100
-READ_LENGTH = 250
+READ_LENGTH = 148
 Clist = [70, 355]
-Alist = np.arange(READ_LENGTH * 2, READ_LENGTH * 8, READ_LENGTH)
+Alist = np.arange(READ_LENGTH * 3, READ_LENGTH * 50, READ_LENGTH)
 
 for C in Clist:
     mdict[C] = {}
@@ -110,7 +119,9 @@ for A in Alist:
         mean, std = sim_adv(A, READ_LENGTH, READ_LENGTH, sim_times, C, 550, 150)
         mdict[C][A] = (mean, std)
 
-fig, axs = plt.subplots(nrows=len(Clist), ncols=1)
+#fig, axs = plt.subplots(nrows=len(Clist), ncols=1)
+
+std_list = list()
 
 iter = 0
 for C in Clist:
@@ -121,21 +132,44 @@ for C in Clist:
         sAlist.append(mdict[C][A][1])
     sAlist = np.array(sAlist) * 1.96
 
-    ax = axs[iter]
-    ax.errorbar(Alist, mAlist, yerr=[sAlist, sAlist], fmt='o')
+    #ax = axs[iter]
+    #ax.errorbar(Alist, mAlist, yerr=[sAlist, sAlist], fmt='o')
     beta1, beta0, rv, pv, stderr = linregress(Alist, mAlist)
     temp_x = np.arange(min(Alist), max(Alist), 10)
-    ax.plot(temp_x, [(beta1 * xx + beta0) for xx in temp_x], color='r', alpha=0.7)
-    ax.set_title('Coverage is [' + str(C) + "] |  y = " + str(np.round(beta1, decimals=5)) + "x + " + str(np.round(beta0, decimals=5)))
+
+    std_list.append(np.array(sAlist))
+
+    #ax.plot(temp_x, [(beta1 * xx + beta0) for xx in temp_x], color='r', alpha=0.7)
+    #ax.set_title('Coverage is [' + str(C) + "] |  y = " + str(np.round(beta1, decimals=5)) + "x + " + str(np.round(beta0, decimals=3)))
     iter += 1
 
     print("\nAdjacency matrix for C=" + str(C))
     print(find_intersections(mAlist, sAlist, Alist))
 
-plt.ylabel("X/Y ratio")
-plt.xlabel("Array length")
-#fig.suptitle(str(sim_times) + " simulations for a (READ_LENGTH=" + str(READ_LENGTH) + ")")
+print("***----***")
+print("SALIST")
+#new_std_for_result = (std_list[0] + std_list[1]) / 2
+#print(new_std_for_result)
+plt.plot(Alist, std_list[0])#new_std_for_result)
+plt.plot(Alist, std_list[1])#new_std_for_result)
+plt.xlabel("array length (A)")
+plt.ylabel("ratio standard deviation")
+plt.title("std.dev(ratio) ~ A :: results")
 plt.show()
+print("***----***")
+print(linregress(Alist, std_list[0])[0:2], "<- for C=70")
+print(linregress(Alist, std_list[1])[0:2], "<- for C=355")
+print(linregress(Alist, (std_list[1] + std_list[0]) / 2)[0:2], "<- for MEAN")
+print("***----***")
+#print((std_list[1] + std_list[0]) / 2)
+print(print_array(std_list[0]), Clist[0])
+print(print_array(std_list[1]), Clist[1])
+print(print_array((std_list[0] + std_list[1]) / 2), (Clist[0] + Clist[1]) / 2)
+print(print_array(wiener(std_list[0])))
+#plt.ylabel("X/Y ratio")
+#plt.xlabel("Array length")
+#fig.suptitle(str(sim_times) + " simulations for a (READ_LENGTH=" + str(READ_LENGTH) + ")")
+#plt.show()
 
 print("\nNote on how to interpret the matrices above:\n- each row is a level of A;\n- each column is the corresponding A value;"
       "\n- a 0 indicates that the statistical between A_row and A_column is not significant;"
