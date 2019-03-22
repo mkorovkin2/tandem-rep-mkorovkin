@@ -137,4 +137,6 @@ plt.xlabel("Array length")
 #fig.suptitle(str(sim_times) + " simulations for a (READ_LENGTH=" + str(READ_LENGTH) + ")")
 plt.show()
 
-print("\nNote on how to interpret the matrices above:\n- each row is a level of A;\n- each column is the corresponding A value;\n- a 0 indicates that the statistical between A_row and A_column is not significant;\n- otherwise, it is significant, and the A_column value is listed in the space.")
+print("\nNote on how to interpret the matrices above:\n- each row is a level of A;\n- each column is the corresponding A value;"
+      "\n- a 0 indicates that the statistical between A_row and A_column is not significant;"
+      "\n- otherwise, it is significant, and the A_column value is listed in the space.")
