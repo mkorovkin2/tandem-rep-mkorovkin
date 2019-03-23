@@ -162,7 +162,7 @@ def score_df_for_std(bp, coverage):
     #(0.0022562765957446804, -0.8927053191489343) <- for C=355
     #(0.0037871170212765964, -1.2238400709219857) <- for MEAN
 
-read_length = 250
+read_length = 100
 Alist = np.arange(read_length * 3, read_length * 50, read_length)
 coverage = np.floor((355 - 70) / 2)
 
@@ -257,8 +257,7 @@ trace1 = go.Scatter(
         size=16,
         color=invert_colors(colors1),
         colorscale='Greens',
-        showscale=True,
-        opacity=calpha
+        showscale=True
     ),
     name="Homozygous: 0/0",
     hovertext=df_00['pattern_size']
@@ -271,8 +270,7 @@ trace2 = go.Scatter(
         size=16,
         color=invert_colors(colors2),
         colorscale='Blues',
-        showscale=True,
-        opacity=calpha
+        showscale=True
     ),
     name="Heterozygous: 0/1",
     hovertext=df_01['pattern_size']
@@ -285,8 +283,7 @@ trace3 = go.Scatter(
         size=16,
         color=colors3,
         colorscale='Reds',
-        showscale=True,
-        opacity=calpha
+        showscale=True
     ),
     name="Homozygous: 1/1",
     hovertext=df_11['pattern_size']
@@ -299,8 +296,7 @@ trace4 = go.Scatter(
         size=16,
         color=colors4,
         colorscale='Viridis',
-        showscale=True,
-        opacity=calpha
+        showscale=True
     ),
     name="Heterozygous: 0/-1",
     hovertext=df_n01['pattern_size']
@@ -326,3 +322,10 @@ data = [trace4, trace1, trace2, trace3, trace0, trace00, trace01, trace0_1, trac
 py.plot(go.Figure(data, layout), filename='scatter-plot-with-colorscale')
 
 # KEY NOTES: higher pattern lengths tend to cause more deviation from the trend; depends on whether it's a gain or a loss
+# 5% outliers around the line
+# read up on the statistics/standard deviation
+# histogram of where the points are (density fo points)
+# in bin sizes: piecewise linear regression
+    # means in theory
+# count fragment ratios; confirm the reasoning behind association of fragment length
+# remove buffers on the inside (25% buffer)
