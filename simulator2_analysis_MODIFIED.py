@@ -193,7 +193,8 @@ def runsim(Clist, READ_LENGTH, fragment_variance, sim_times, test_list):
     plt.show()
 
 def sim_regression_with_randomized_fragment(Clist, fragment_variance, fragment_length_mean, sim_times, sim_times_rand, array_length, read_length, flank_size, plot):
-    test_list = np.array(np.random.normal(fragment_length_mean, fragment_variance, sim_times_rand), dtype=np.int32)
+    #test_list = np.array(np.random.normal(fragment_length_mean, fragment_variance, sim_times_rand), dtype=np.int32)
+    test_list = np.array(np.random.uniform(read_length, fragment_length_mean * 2 + (fragment_length_mean - read_length), sim_times_rand), dtype=np.int32)
     ordered_mean = list()
     ordered_ci = list()
     ordered_t = list()
@@ -238,7 +239,7 @@ def sim_regression_with_randomized_fragment(Clist, fragment_variance, fragment_l
     (intercept1 - cimean)
 
 Clist = [70, 355]
-READ_LENGTH = 250
+READ_LENGTH = 148#100#250
 fragment_variance = 150
 sim_times = 20
 fragment_length_list = [400, 550, 700]

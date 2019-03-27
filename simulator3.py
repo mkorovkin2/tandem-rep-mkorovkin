@@ -45,8 +45,8 @@ def sim_adv(A, R, F, sim_times, C, frag_mean, frag_std):
             starting_points.append(random_index2)
 
         # Calculate acceptable boundaries for hits/misses
-        A_lower = F
-        A_upper = (A_lower - 0.25 * F) + A - 0.75 * F - R
+        A_lower = F * 0.75 # A_lower = F
+        A_upper = (A_lower - 0.25 * F) + A - R # A_upper = (A_lower - 0.25 * F) + A - 0.75 * F - R
         F_lower = 0
         F_lower_bound = F * 0.5
         F_upper = A_upper
@@ -96,9 +96,9 @@ tlist = list()
 mdict = {}
 
 sim_times = 100
-READ_LENGTH = 250
+READ_LENGTH = 100
 Clist = [70, 355]
-Alist = np.arange(READ_LENGTH * 2, READ_LENGTH * 8, READ_LENGTH)
+Alist = np.arange(READ_LENGTH * 2, READ_LENGTH * 50, READ_LENGTH)
 
 for C in Clist:
     mdict[C] = {}
@@ -111,6 +111,8 @@ for A in Alist:
         mdict[C][A] = (mean, std)
 
 fig, axs = plt.subplots(nrows=len(Clist), ncols=1)
+
+print("---")
 
 iter = 0
 for C in Clist:
@@ -127,10 +129,11 @@ for C in Clist:
     temp_x = np.arange(min(Alist), max(Alist), 10)
     ax.plot(temp_x, [(beta1 * xx + beta0) for xx in temp_x], color='r', alpha=0.7)
     ax.set_title('Coverage is [' + str(C) + "] |  y = " + str(np.round(beta1, decimals=5)) + "x + " + str(np.round(beta0, decimals=5)))
+    print(str(np.round(beta1, decimals=7)) + " * A + " + str(np.round(beta0, decimals=7)))
     iter += 1
 
-    print("\nAdjacency matrix for C=" + str(C))
-    print(find_intersections(mAlist, sAlist, Alist))
+    #print("\nAdjacency matrix for C=" + str(C))
+    #print(find_intersections(mAlist, sAlist, Alist))
 
 plt.ylabel("X/Y ratio")
 plt.xlabel("Array length")

@@ -3,6 +3,7 @@ from numpy import random as rand
 import matplotlib.pyplot as plt
 from scipy.stats import linregress
 from scipy.signal import wiener
+import pandas as pd
 
 def find_intersections(mAlist, sAlist, Alist):
     adjacency_matrix = np.zeros(shape=(len(mAlist), len(mAlist)))
@@ -46,8 +47,8 @@ def sim_adv(A, R, F, sim_times, C, frag_mean, frag_std):
             starting_points.append(random_index2)
 
         # Calculate acceptable boundaries for hits/misses
-        A_lower = F
-        A_upper = (A_lower - 0.25 * F) + A - 0.75 * F - R
+        A_lower = F * 0.75  # A_lower = F
+        A_upper = (A_lower - 0.25 * F) + A - R  # A_upper = (A_lower - 0.25 * F) + A - 0.75 * F - R
         F_lower = 0
         F_lower_bound = F * 0.5
         F_upper = A_upper
@@ -104,8 +105,8 @@ slist = list()
 tlist = list()
 mdict = {}
 
-sim_times = 100
-READ_LENGTH = 148
+sim_times = 150
+READ_LENGTH = 250
 Clist = [70, 355]
 Alist = np.arange(READ_LENGTH * 3, READ_LENGTH * 50, READ_LENGTH)
 
@@ -162,10 +163,14 @@ print(linregress(Alist, std_list[1])[0:2], "<- for C=355")
 print(linregress(Alist, (std_list[1] + std_list[0]) / 2)[0:2], "<- for MEAN")
 print("***----***")
 #print((std_list[1] + std_list[0]) / 2)
-print(print_array(std_list[0]), Clist[0])
-print(print_array(std_list[1]), Clist[1])
-print(print_array((std_list[0] + std_list[1]) / 2), (Clist[0] + Clist[1]) / 2)
-print(print_array(wiener(std_list[0])))
+#print_array(std_list[0]), Clist[0])
+def save_array(sa1, sl1, sa2, sl2, sa3, sl3, save_title):
+    df = pd.DataFrame(data={sl1: sa1, sl2: sa2, sl3: sa3})
+    df.to_csv("/Users/mkorovkin/Desktop/marzd/" + save_title)
+save_array(std_list[0], "70", std_list[1], "355", (std_list[0] + std_list[1]) / 2, "def", "std_" + str(READ_LENGTH) + ".csv")
+#print(print_array(std_list[1]), Clist[1])
+#print(print_array((std_list[0] + std_list[1]) / 2), (Clist[0] + Clist[1]) / 2)
+#print(print_array(wiener(std_list[0])))
 #plt.ylabel("X/Y ratio")
 #plt.xlabel("Array length")
 #fig.suptitle(str(sim_times) + " simulations for a (READ_LENGTH=" + str(READ_LENGTH) + ")")
