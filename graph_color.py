@@ -7,6 +7,7 @@ import plotly.graph_objs as go
 import matplotlib.pyplot as plt
 
 def scale_to_range(list_, min_, max_):
+    list_ = np.log(list_)
     list_ = np.array(list_, dtype=np.float32)
     min_sp = list_.min()
     max_sp = list_.max()
@@ -40,7 +41,7 @@ def show_array_length_frequency_plot(data0, infix):
     plt.title("Array Length Frequency of " + infix + " Data")
     plt.show()
 
-def pandas_analyze(path, genotype_filter="", printE=0, title="", force_exclude=0, force_stop=0,
+def pandas_analyze(path, READ_LENGTH, genotype_filter="", printE=0, title="", force_exclude=0, force_stop=0,
                    drop_lowest_percent_pattern_length=0.0, drop_lowest_percent_array_length=0.0):
     dataframe = pd.read_csv(path)
     if force_stop != 0:
@@ -67,7 +68,11 @@ def pandas_analyze(path, genotype_filter="", printE=0, title="", force_exclude=0
     scaled_patterns = dataframe['pattern_size']
     scaled_patterns = scale_to_range(scaled_patterns, 0, 39 - 15)
 
-    return dataframe, scaled_patterns, np.array(dataframe['array_length'])
+    Alist = np.arange(READ_LENGTH * 3, READ_LENGTH * 50, READ_LENGTH)
+    array_length_list = np.array(dataframe['array_length'])
+    rolling_std_list = 1 #arary_length_list[array_length_list > Alist]
+
+    return dataframe, scaled_patterns, np.array(dataframe['array_length']), rolling_std_list#np.array(pd.Series(dataframe['array_length']).rolling(window=50).std())
 
 def score_df(csv_name, minx, maxx, xs, force_exclude=0, static=(False, 0)):
     dataframe = pd.read_csv(csv_name)
@@ -193,32 +198,37 @@ elif read_length == 250:
 else:
     exit(0)
 
-excludeperc_ps = 0.7
-excludeperc_arraylength = 0.9
+excludeperc_ps = -0.7
+excludeperc_arraylength = -0.9
 
-df_00, colors1, arraylength_data00 = pandas_analyze("/Users/mkorovkin/Desktop/marzd/" + csv_filename,
-                                        genotype_filter='0/0', force_exclude=maxax,
-                                                    drop_lowest_percent_pattern_length=excludeperc_ps,
-                                                    drop_lowest_percent_array_length=excludeperc_arraylength)#, filter_SI=True)
-df_01, colors2, arraylength_data01 = pandas_analyze("/Users/mkorovkin/Desktop/marzd/" + csv_filename,
-                                        genotype_filter='0/1', force_exclude=maxax,
-                                                    drop_lowest_percent_pattern_length=excludeperc_ps,
-                                                    drop_lowest_percent_array_length=excludeperc_arraylength)#, filter_SI=True)
-df_11, colors3, arraylength_data11 = pandas_analyze("/Users/mkorovkin/Desktop/marzd/" + csv_filename,
-                                        genotype_filter='43466', force_exclude=maxax,
-                                                    drop_lowest_percent_pattern_length=excludeperc_ps,
-                                                    drop_lowest_percent_array_length=excludeperc_arraylength)#, filter_SI=True)
-df_n01, colors4, arraylength_data0n1 = pandas_analyze("/Users/mkorovkin/Desktop/marzd/" + csv_filename,
-                                          genotype_filter='0/-1', force_exclude=maxax,
-                                                    drop_lowest_percent_pattern_length=excludeperc_ps,
-                                                    drop_lowest_percent_array_length=excludeperc_arraylength)#, filter_SI=True)
+df_00, colors1, arraylength_data00, rolling_std00 = pandas_analyze("/Users/mkorovkin/Desktop/marzd/" + csv_filename,
+                                                                   genotype_filter='0/0', force_exclude=maxax,
+                                                                   drop_lowest_percent_pattern_length=excludeperc_ps,
+                                                                   drop_lowest_percent_array_length=excludeperc_arraylength)#, filter_SI=True)
+df_01, colors2, arraylength_data01, rolling_std01 = pandas_analyze("/Users/mkorovkin/Desktop/marzd/" + csv_filename,
+                                                                   genotype_filter='0/1', force_exclude=maxax,
+                                                                   drop_lowest_percent_pattern_length=excludeperc_ps,
+                                                                   drop_lowest_percent_array_length=excludeperc_arraylength)#, filter_SI=True)
+df_11, colors3, arraylength_data11, rolling_std11 = pandas_analyze("/Users/mkorovkin/Desktop/marzd/" + csv_filename,
+                                                                   genotype_filter='43466', force_exclude=maxax,
+                                                                   drop_lowest_percent_pattern_length=excludeperc_ps,
+                                                                   drop_lowest_percent_array_length=excludeperc_arraylength)#, filter_SI=True)
+df_n01, colors4, arraylength_data0n1, rolling_std0n1 = pandas_analyze("/Users/mkorovkin/Desktop/marzd/" + csv_filename,
+                                                                      genotype_filter='0/-1', force_exclude=maxax,
+                                                                      drop_lowest_percent_pattern_length=excludeperc_ps,
+                                                                      drop_lowest_percent_array_length=excludeperc_arraylength)#, filter_SI=True)
+
+df_n1n1, colors5, arraylength_datan1n1, rolling_std1n1 = pandas_analyze("/Users/mkorovkin/Desktop/marzd/" + csv_filename,
+                                                                        genotype_filter='1', force_exclude=maxax,
+                                                                        drop_lowest_percent_pattern_length=excludeperc_ps,
+                                                                        drop_lowest_percent_array_length=excludeperc_arraylength)#, filter_SI=True)
 
 show00 = True
 show01 = True
 show11 = True
 show0n1 = True
 show_general00 = (True, True)
-show_expected = (True, True)
+show_expected = (True, False)
 show_whole_dataset_best_fit = (False, False)
 
 xsin, stds = score_df_for_std_from_file(read_length, coverage, regress_std=True)
@@ -251,7 +261,7 @@ trace00 = go.Scatter(
 )
 trace00_1 = go.Scatter(
     x=xsin,
-    y=(ypoints2 - stds),
+    y=(ypoints2 - rolling_std00),
     mode='lines',
     marker=dict(
         size=16,
@@ -262,7 +272,7 @@ trace00_1 = go.Scatter(
 )
 trace00_2 = go.Scatter(
     x=xsin,
-    y=(ypoints2 + stds),
+    y=(ypoints2 + rolling_std00),
     mode='lines',
     marker=dict(
         size=16,
@@ -379,6 +389,19 @@ trace4 = go.Scatter(
     name="Heterozygous: 0/-1",
     hovertext=df_n01['pattern_size']
 )
+trace5 = go.Scatter(
+    x=df_n1n1['array_length'],
+    y=df_n1n1['ratio'],
+    mode='markers',
+    marker=dict(
+        size=16,
+        color=colors5,
+        colorscale='Viridis',
+        showscale=True
+    ),
+    name="Heterozygous: -1/-1",
+    hovertext=df_n1n1['pattern_size']
+)
 
 layout = go.Layout(title="READ_LENGTH=" + str(read_length) + " | coverage=" + str(coverage) + " | array lengths from [" + str(read_length * 3) + ":" + str(read_length * 50) + "]",
                    xaxis=dict(ticks='', showticklabels=True,
@@ -425,14 +448,24 @@ if show_whole_dataset_best_fit[0]:
     if show_whole_dataset_best_fit[1]:
         data.append(trace00_1)
         data.append(trace00_2)
-
+data.append(trace5)
 py.plot(go.Figure(data, layout), filename='scatter-plot-with-colorscale')
 
-# KEY NOTES: higher pattern lengths tend to cause more deviation from the trend; depends on whether it's a gain or a loss
-# 5% outliers around the line
-# read up on the statistics/standard deviation
-# -- histogram of where the points are (density fo points)
-# in bin sizes: piecewise linear regression
-    # means in theory
-# count fragment ratios; confirm the reasoning behind association of fragment length
-# remove buffers on the inside (25% buffer)
+# 10000 trials instead
+# lines are not confidence interval -> just a range of standard deviation * 1.96
+
+# C = F * mean(fragment length) / G (<- genome size); <- fragment coverage; F = number of fragments
+# (number of fragments ->) F = C * AL (<- array length) / mean(fragment length) <- C=100; AL should be 4 * read length
+    # 5 or 10 times the array length; with minimum of 10000 -> 10000 base pairs on each side; still keep (3*read length, 50*read length)
+    # they can start from [0 to (10000 + 10000 - mean fragment length)] -> C and python integration -> still keep the 75% flank on each side of the array length
+        # remember free memory
+        # 1 trial of 10000 runs, not multiple trials
+# add in -1/-1s
+
+# log scale colors
+
+################################################################################################
+# make sure what we're looking at is standard error and not standard deviation
+# standard deviation bars around the actual data based on the 0/0s
+# compare to actual genomes
+# make a detailed approach for whatever it is I need to do

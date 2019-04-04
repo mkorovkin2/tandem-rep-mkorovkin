@@ -18,7 +18,7 @@ def find_intersections(mAlist, sAlist, Alist):
     return adjacency_matrix
 
 def sim_adv(A, R, F, sim_times, C, frag_mean, frag_std):
-    T = A + 2 * F
+    T = A + 2 * F * 0.75
     N = np.int32(np.ceil(C * T / R))
 
     # Lists used for tracking read hits/misses
@@ -97,8 +97,8 @@ mdict = {}
 
 sim_times = 100
 READ_LENGTH = 100
-Clist = [70, 355]
-Alist = np.arange(READ_LENGTH * 2, READ_LENGTH * 50, READ_LENGTH)
+Clist = [70, 71]#355]
+Alist = np.arange(READ_LENGTH * 2, READ_LENGTH * 20, READ_LENGTH)
 
 for C in Clist:
     mdict[C] = {}
