@@ -181,7 +181,7 @@ def score_df_for_std_from_file(bp, coverage, regress_std=False):
     #(0.0022562765957446804, -0.8927053191489343) <- for C=355
     #(0.0037871170212765964, -1.2238400709219857) <- for MEAN
 
-read_length = 100
+read_length = 250
 Alist = np.arange(read_length * 3, read_length * 50, read_length)
 coverage = np.floor((355 - 70) / 2)
 

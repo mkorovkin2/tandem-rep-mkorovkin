@@ -1,4 +1,7 @@
 import numpy as np
+import pandas as pd
+from scipy.stats import linregress
+import matplotlib.pyplot as plt
 
 def find_variance(kwargs, A_v, R_v, F_v):
     to_find = "variance"
@@ -54,5 +57,20 @@ def sim(kwargs):
     print(R_v)
     print(F_v)
 
-sim("variance in A 4 variance in F 100 variance in R 3") #normal 44 3 loss 0.2 3 gain 33 2
+def get_mean_std(file, Alist, read_length):
+    df = pd.read_csv(file)
+    means = np.array(df["mA" + str(read_length)])
+    stds = np.array(df["sA" + str(read_length)])
 
+    s, i, _, _, _ = linregress(Alist, means)
+
+    return [(s * A + i) for A in Alist]
+
+read_length = 100
+Alist = np.arange(read_length * 3, read_length * 40, read_length)
+gs = get_mean_std("/Users/mkorovkin/Desktop/marzd/output30.csv", Alist, read_length)
+
+print(gs)
+
+plt.scatter(Alist, gs)
+plt.show()
