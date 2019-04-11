@@ -79,7 +79,7 @@ def sim_adv(A, R, F, sim_times, C, frag_mean, frag_std):
 
 def sim_adv_new(read_length, A, F, frag_mean, frag_std, sim_times):
     # Values to calculate
-    C = 100
+    C = 355#100
     g = 10000#read_length * 51
     G = g + A + g
     number_fragments = np.int32(np.ceil(C * (A) / frag_mean))
@@ -134,11 +134,11 @@ def sim_adv_new(read_length, A, F, frag_mean, frag_std, sim_times):
     return hit_over_out.mean(), hit_over_out.std()
 
 def init_sim(R):
-    Alist = np.arange(R * 3, R * 20, R)
+    Alist = np.arange(R * 3, R * 40, R)
     mAlist = list()
     sAlist = list()
     for A in Alist:
-        mean, std = sim_adv_new(R, A, np.int32(R * 0.5), 550, 150, 1000)
+        mean, std = sim_adv_new(R, A, np.int32(R * 0.5), 550, 150, 5000)
         mAlist.append(mean)
         sAlist.append(std * 1.96)
         print(R, A)
@@ -154,21 +154,16 @@ def init_sim(R):
 
 READ_LENGTH = [100, 148, 250]
 
-#mA0, sA0 = init_sim(READ_LENGTH[0])
-#mA1, sA1 = init_sim(READ_LENGTH[1])
+mA0, sA0 = init_sim(READ_LENGTH[0])
+mA1, sA1 = init_sim(READ_LENGTH[1])
 mA2, sA2 = init_sim(READ_LENGTH[2])
-
-exit(0)
 
 overall_df = pd.DataFrame(data={"mA100": mA0,
                                 "sA100": sA0,
-                                #"mA148": mA1,
-                                #"sA148": sA1,
-                                #"mA250": mA2,
-                                #"sA250": sA2
+                                "mA148": mA1,
+                                "sA148": sA1,
+                                "mA250": mA2,
+                                "sA250": sA2
                                 }
                           )
-overall_df.to_csv("/Users/mkorovkin/Desktop/marzd/output40.csv")
-
-#for R in READ_LENGTH:
-#    init_sim(R)
+overall_df.to_csv("/Users/mkorovkin/Desktop/marzd/output40_coverage355.csv")

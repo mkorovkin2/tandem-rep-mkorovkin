@@ -202,6 +202,42 @@ def show_hg_file():
 
     return x, df['ratio']
 
+def show_hg_file2():
+    file_path = "/Users/mkorovkin/Desktop/marzd/HG007counts.csv"
+
+    df = pd.read_csv(file_path)
+
+    df = df.loc[df['left_flank'] > 0]
+    df = df.loc[df['right_flank'] > 0]
+    df = df.loc[df['array_length'] > 0]
+    df = df.loc[df['inside_array'] > 0]
+    df = df.loc[df['array_length'] < 5000]
+    df = df.loc[df['TRID'].str.contains("S")]
+
+    df['ratio'] = df['inside_array'] / (df['left_flank'] + df['right_flank'])
+    df = df.loc[df['ratio'] < 200]
+
+    file_path2 = "/Users/mkorovkin/Desktop/marzd/refset_full.csv"
+
+    df2 = pd.read_csv(file_path2)
+    df2.drop(['chrom', 'start', 'end'], axis=1)
+    df2 = df2.loc[df2['indistinguishable'] == "S"]
+    df2['TRID'] = df2['TRID'].apply(lambda x: str(x) + "_S")
+
+    df = pd.merge(df, df2, on='TRID')
+
+    x = df['array_length']
+
+    scaled_patterns = df['pattern_size']
+    scaled_patterns = np.log(scale_to_range(scaled_patterns, 0, 39 - 15) + 1)
+
+    pat_list = list()
+    for pat in range(len(df['pattern_size'])):
+        t = (df.loc[pat]['pattern_size'], df.loc[pat]['copy_number'])
+        pat_list.append(t)
+
+    return x, df['ratio'], scaled_patterns, df['pattern_size']
+
 read_length = 148
 Alist2 = np.arange(read_length * 3, read_length * (40 - 7), read_length)
 Alist = np.arange(read_length * 3, read_length * 50, read_length)
@@ -223,7 +259,7 @@ else:
 excludeperc_ps = -0.7
 excludeperc_arraylength = -0.9
 
-xx, ratiox = show_hg_file()
+xHG, ratioHG, colorsHG, patternsHG = show_hg_file2()
 
 alist_standard, stdlist_standard = score_df_for_std_from_file(read_length, 100)
 _, _, ypoints = score_df("/Users/mkorovkin/Desktop/marzd/" + csv_filename, minax, maxax, alist_standard, force_exclude=maxax, static=(True, read_length))
@@ -233,7 +269,7 @@ df_00, colors1, arraylength_data00, yeb, yebp, yebm = pandas_analyze_new("/Users
                                                                    drop_lowest_percent_pattern_length=excludeperc_ps,
                                                                    drop_lowest_percent_array_length=excludeperc_arraylength)
 
-fitted_means_expected, fitted_stds = get_mean_std("/Users/mkorovkin/Desktop/marzd/output30.csv", Alist2, read_length)
+fitted_means_expected, fitted_stds = get_mean_std("/Users/mkorovkin/Desktop/marzd/output40_new.csv", Alist2, read_length)
 
 show00 = True
 show01 = True
@@ -284,77 +320,82 @@ trace0_2 = go.Scatter(
     name="(1)-Std based on simulations"
 )
 
-trace4 = go.Scatter(
-    x=arraylength_data00,
-    y=df_00['ratio'],
-    mode='markers',
-    marker=dict(
-        size=16,
-        color=colors1,
-        colorscale='Viridis',
-    ),
-    name="(2) 0/0 Homozygous regressive fit line"
-)
-
-trace1 = go.Scatter(
-    x=Alist,
-    y=yeb,
-    mode='lines',
-    marker=dict(
-        size=16,
-        color=colors1,
-        colorscale='Viridis',
-    ),
-    name="(2) Regressive fit for homozygous dataset"
-)
-
 trace2 = go.Scatter(
-    x=xx,
-    y=ratiox,
-    mode='markers',
-    marker=dict(
-        size=16,
-        color=10,
-        colorscale='Reds',
-    ),
-    name="HG007 Points"
-)
+        x=xHG,
+        y=ratioHG,
+        mode='markers',
+        marker=dict(
+            size=16,
+            color=colorsHG,
+            colorscale='Reds',
+            showscale=True
+        ),
+        name="HG007 Points",
+        hovertext=patternsHG
+    )
 
-trace3 = go.Scatter(
-    x=alist_standard,
-    y=ypoints,
-    mode='lines',
-    marker=dict(
-        size=16,
-        color=[0, 0],
-        colorscale='Greys',
-    ),
-    name="(3) Expected regression line based on dataset (last week's simulations)"
-)
+def dump():
+    trace4 = go.Scatter(
+        x=arraylength_data00,
+        y=df_00['ratio'],
+        mode='markers',
+        marker=dict(
+            size=16,
+            color=colors1,
+            colorscale='Viridis',
+        ),
+        name="(2) 0/0 Homozygous regressive fit line"
+    )
 
-trace3_1 = go.Scatter(
-    x=alist_standard,
-    y=ypoints - stdlist_standard,
-    mode='lines',
-    marker=dict(
-        size=16,
-        color=[0, 0],
-        colorscale='Greys',
-    ),
-    name="(3)-Std on Expected regression line"
-)
+    trace1 = go.Scatter(
+        x=Alist,
+        y=yeb,
+        mode='lines',
+        marker=dict(
+            size=16,
+            color=colors1,
+            colorscale='Viridis',
+        ),
+        name="(2) Regressive fit for homozygous dataset"
+    )
 
-trace3_2 = go.Scatter(
-    x=alist_standard,
-    y=ypoints + stdlist_standard,
-    mode='lines',
-    marker=dict(
-        size=16,
-        color=[0, 0],
-        colorscale='Greys',
-    ),
-    name="(3)+Std on Expected regression line"
-)
+    trace3 = go.Scatter(
+        x=alist_standard,
+        y=ypoints,
+        mode='lines',
+        marker=dict(
+            size=16,
+            color=[0, 0],
+            colorscale='Greys',
+        ),
+        name="(3) Expected regression line based on dataset (last week's simulations)"
+    )
+
+    trace3_1 = go.Scatter(
+        x=alist_standard,
+        y=ypoints - stdlist_standard,
+        mode='lines',
+        marker=dict(
+            size=16,
+            color=[0, 0],
+            colorscale='Greys',
+        ),
+        name="(3)-Std on Expected regression line"
+    )
+
+    trace3_2 = go.Scatter(
+        x=alist_standard,
+        y=ypoints + stdlist_standard,
+        mode='lines',
+        marker=dict(
+            size=16,
+            color=[0, 0],
+            colorscale='Greys',
+        ),
+        name="(3)+Std on Expected regression line"
+    )
+
+
 
 layout = go.Layout(title="READ_LENGTH=" + str(read_length) + " | coverage=" + str(coverage) + " | array lengths from [" + str(read_length * 3) + ":" + str(read_length * 50) + "]",
                    xaxis=dict(ticks='', showticklabels=True,
@@ -372,7 +413,7 @@ layout = go.Layout(title="READ_LENGTH=" + str(read_length) + " | coverage=" + st
                                     color='#7f7f7f')),
                    showlegend=True, hovermode='closest', legend=dict(orientation='h'))
 
-data = [trace2, trace0, trace0_1, trace0_2, trace1, trace4, trace3, trace3_1, trace3_2]
+data = [trace2, trace0, trace0_1, trace0_2]
 
 py.plot(go.Figure(data, layout), filename='scatter-plot-with-colorscale')
 

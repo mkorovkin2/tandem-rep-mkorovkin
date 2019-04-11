@@ -66,11 +66,28 @@ def get_mean_std(file, Alist, read_length):
 
     return [(s * A + i) for A in Alist]
 
-read_length = 100
-Alist = np.arange(read_length * 3, read_length * 40, read_length)
-gs = get_mean_std("/Users/mkorovkin/Desktop/marzd/output30.csv", Alist, read_length)
+def show_hg_file():
+    file_path = "/Users/mkorovkin/Desktop/marzd/HG007counts.csv"
 
-print(gs)
+    df = pd.read_csv(file_path)
 
-plt.scatter(Alist, gs)
-plt.show()
+    df = df.loc[df['left_flank'] > 0]
+    df = df.loc[df['right_flank'] > 0]
+    df = df.loc[df['array_length'] > 0]
+    df = df.loc[df['inside_array'] > 0]
+    df = df.loc[df['array_length'] < 5000]
+    df = df.loc[df['TRID'].str.contains("S")]
+
+    df['ratio'] = df['inside_array'] / (df['left_flank'] + df['right_flank'])
+    df = df.loc[df['ratio'] < 200]
+
+    file_path2 = "/Users/mkorovkin/Desktop/marzd/refset_full.csv"
+
+    df2 = pd.read_csv(file_path2)
+    df2.drop(['chrom', 'start', 'end'], axis=1)
+    df2 = df2.loc[df2['indistinguishable'] == "S"]
+    df2['TRID'] = df2['TRID'].apply(lambda x: str(x) + "_S")
+
+    df = pd.merge(df, df2, on='TRID')
+
+    return df
