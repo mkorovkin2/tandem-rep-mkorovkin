@@ -166,4 +166,4 @@ overall_df = pd.DataFrame(data={"mA100": mA0,
                                 "sA250": sA2
                                 }
                           )
-overall_df.to_csv("/Users/mkorovkin/Desktop/marzd/output40_coverage355.csv")
+overall_df.to_csv("/Users/mkorovkin/Desktop/marzd/output40_coverage355_00.csv")

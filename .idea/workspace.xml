@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cec783f4-3539-47f8-b443-8e5d5911c199" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/elementary_prediction.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/graph_creation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/prediction2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elementary_prediction.py" beforeDir="false" afterPath="$PROJECT_DIR$/elementary_prediction.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/graph_color2.py" beforeDir="false" afterPath="$PROJECT_DIR$/graph_color2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/kwargs_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/kwargs_test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/simulator5.py" beforeDir="false" afterPath="$PROJECT_DIR$/simulator5.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,19 +20,11 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/TandemReyeats$bed_read2.coverage" NAME="bed_read2 Coverage Results" MODIFIED="1552022489001" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/TandemReyeats$simulator3.coverage" NAME="simulator3 Coverage Results" MODIFIED="1554430462131" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TandemReyeats$simulator2_analysis.coverage" NAME="simulator2_analysis Coverage Results" MODIFIED="1551899922410" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/TandemReyeats$graph_color.coverage" NAME="graph_color Coverage Results" MODIFIED="1554478826753" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/TandemReyeats$pytest_in_elementary_prediction_py.coverage" NAME="pytest in elementary_prediction.py Coverage Results" MODIFIED="1555022477866" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/TandemReyeats$lib_varaince_filter.coverage" NAME="lib_varaince_filter Coverage Results" MODIFIED="1551581583980" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/TandemReyeats$graph_color2.coverage" NAME="graph_color2 Coverage Results" MODIFIED="1555021153906" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/TandemReyeats$py_sim.coverage" NAME="py_sim Coverage Results" MODIFIED="1550720139480" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/TandemReyeats$kwargs_test.coverage" NAME="kwargs_test Coverage Results" MODIFIED="1554589599009" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/TandemReyeats$hg_modifhy.coverage" NAME="hg_modifhy Coverage Results" MODIFIED="1553698845030" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/TandemReyeats$read_hg.coverage" NAME="read_hg Coverage Results" MODIFIED="1554439060789" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TandemReyeats$prediction2.coverage" NAME="prediction2 Coverage Results" MODIFIED="1556869898204" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TandemReyeats$graph_creation.coverage" NAME="graph_creation Coverage Results" MODIFIED="1556874613243" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TandemReyeats$py_sim2.coverage" NAME="py_sim2 Coverage Results" MODIFIED="1551416624396" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/TandemReyeats$FROMANDREY_pysim.coverage" NAME="FROMANDREY_pysim Coverage Results" MODIFIED="1551506348424" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/TandemReyeats$andrey_file.coverage" NAME="andrey_file Coverage Results" MODIFIED="1549526009570" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TandemReyeats$graph_color2_driver.coverage" NAME="graph_color2_driver Coverage Results" MODIFIED="1556874602867" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TandemReyeats$simulator2_analysis_MODIFIED.coverage" NAME="simulator2_analysis_MODIFIED Coverage Results" MODIFIED="1553665514972" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TandemReyeats$simulator4_exclusively_for_std.coverage" NAME="simulator4_exclusively_for_std Coverage Results" MODIFIED="1553660926624" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TandemReyeats$bed_read.coverage" NAME="bed_read Coverage Results" MODIFIED="1550851285380" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -40,6 +33,20 @@
     <SUITE FILE_PATH="coverage/TandemReyeats$simulator5.coverage" NAME="simulator5 Coverage Results" MODIFIED="1555020739496" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TandemReyeats$case_study_question.coverage" NAME="case_study_question Coverage Results" MODIFIED="1549319529599" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TandemReyeats$simulator.coverage" NAME="simulator Coverage Results" MODIFIED="1551456176059" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TandemReyeats$classifier.coverage" NAME="classifier Coverage Results" MODIFIED="1556861477281" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TandemReyeats$simulator3.coverage" NAME="simulator3 Coverage Results" MODIFIED="1554430462131" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TandemReyeats$simulator6.coverage" NAME="simulator6 Coverage Results" MODIFIED="1556857780891" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TandemReyeats$graph_color.coverage" NAME="graph_color Coverage Results" MODIFIED="1554478826753" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TandemReyeats$pytest_in_elementary_prediction_py.coverage" NAME="pytest in elementary_prediction.py Coverage Results" MODIFIED="1555056255647" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TandemReyeats$lib_varaince_filter.coverage" NAME="lib_varaince_filter Coverage Results" MODIFIED="1551581583980" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TandemReyeats$graph_color2.coverage" NAME="graph_color2 Coverage Results" MODIFIED="1556817529388" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TandemReyeats$py_sim.coverage" NAME="py_sim Coverage Results" MODIFIED="1550720139480" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TandemReyeats$kwargs_test.coverage" NAME="kwargs_test Coverage Results" MODIFIED="1554589599009" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TandemReyeats$hg_modifhy.coverage" NAME="hg_modifhy Coverage Results" MODIFIED="1553698845030" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TandemReyeats$read_hg.coverage" NAME="read_hg Coverage Results" MODIFIED="1554439060789" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TandemReyeats$FROMANDREY_pysim.coverage" NAME="FROMANDREY_pysim Coverage Results" MODIFIED="1551506348424" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TandemReyeats$elementary_prediction.coverage" NAME="elementary_prediction Coverage Results" MODIFIED="1555022814289" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TandemReyeats$andrey_file.coverage" NAME="andrey_file Coverage Results" MODIFIED="1549526009570" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -61,10 +68,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/simulator3.py">
+        <entry file="file://$PROJECT_DIR$/prediction2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1500">
-              <caret line="103" column="17" selection-start-line="103" selection-start-column="17" selection-end-line="103" selection-end-column="17" />
+            <state relative-caret-position="117">
+              <caret line="159" column="39" selection-start-line="159" selection-start-column="39" selection-end-line="159" selection-end-column="39" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -72,14 +79,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/simulator5.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-148">
-              <caret line="117" column="37" selection-start-line="117" selection-start-column="37" selection-end-line="117" selection-end-column="37" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/description.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="259">
+                <caret line="40" column="79" selection-start-line="40" selection-start-column="79" selection-end-line="40" selection-end-column="79" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -87,12 +94,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/graph_color2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="393">
-              <caret line="238" column="62" selection-start-line="238" selection-start-column="62" selection-end-line="238" selection-end-column="62" />
+            <state relative-caret-position="5202">
+              <caret line="598" lean-forward="true" selection-start-line="598" selection-end-line="598" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
                 <element signature="e#222#531#0" />
-                <element signature="e#572#748#0" />
                 <element signature="e#789#965#0" />
                 <element signature="e#1057#1135#0" />
                 <element signature="e#1193#1382#0" />
@@ -101,25 +107,32 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/elementary_prediction.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/simulator6.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="64" column="13" lean-forward="true" selection-start-line="64" selection-start-column="13" selection-end-line="64" selection-end-column="13" />
+            <state relative-caret-position="598">
+              <caret line="62" column="53" lean-forward="true" selection-start-line="62" selection-start-column="53" selection-end-line="62" selection-end-column="53" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
-                <element signature="e#100#1234#0" />
-                <element signature="e#235#478#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/read_hg.py">
+        <entry file="file://$PROJECT_DIR$/graph_color2_driver.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="36" column="21" selection-start-line="36" selection-start-column="21" selection-end-line="36" selection-end-column="21" />
+            <state>
+              <caret column="19" lean-forward="true" selection-start-column="19" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/graph_creation.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="341">
+              <caret line="489" column="38" lean-forward="true" selection-start-line="489" selection-start-column="38" selection-end-line="489" selection-end-column="38" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -128,10 +141,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kwargs_test.py">
+        <entry file="file://$PROJECT_DIR$/classifier.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1335">
-              <caret line="92" column="13" selection-start-line="92" selection-start-column="13" selection-end-line="92" selection-end-column="13" />
+            <state relative-caret-position="148">
+              <caret line="315" column="27" lean-forward="true" selection-start-line="315" selection-start-column="27" selection-end-line="315" selection-end-column="27" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/simulator5.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="57">
+              <caret line="136" column="12" selection-start-line="136" selection-start-column="12" selection-end-line="136" selection-end-column="12" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -142,8 +167,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/graph_color.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5940">
-              <caret line="402" column="4" selection-start-line="402" selection-start-column="4" selection-end-line="402" selection-end-column="4" />
+            <state relative-caret-position="444">
+              <caret line="428" column="10" selection-start-line="428" selection-start-column="10" selection-end-line="428" selection-end-column="10" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -162,36 +187,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Alist</find>
-      <find>sim_regression_with_randomized_fragment</find>
-      <find>sim_reg_aux</find>
-      <find>t</find>
-      <find>random</find>
+      <find>to_csv</find>
+      <find>save</find>
+      <find>pat_list</find>
+      <find>drop_lowest_percent_array_length</find>
+      <find>drop_lowest_percent_pattern_length</find>
+      <find>trace1</find>
+      <find>sim_adv</find>
+      <find>starting_points</find>
+      <find>init_sim</find>
+      <find>match_read_length</find>
+      <find>selections</find>
+      <find>iterative_forwards_loss_with_selection</find>
+      <find>match_point</find>
+      <find>iterative_loss_with_selection</find>
+      <find>get_x_y_selection</find>
+      <find>match_point_as_nearest_neighbor</find>
+      <find>hg_</find>
+      <find>pandas_analyze_new</find>
+      <find>trace_stdp</find>
+      <find>get_written_std</find>
+      <find>smooth</find>
       <find>ratio</find>
-      <find>color</find>
-      <find>arange</find>
-      <find>std</find>
-      <find>find_intersections</find>
-      <find>normal</find>
-      <find>score_df_for_std</find>
-      <find>xsin</find>
-      <find>calpha</find>
-      <find>ypoints</find>
-      <find>yeb</find>
-      <find>ratiox</find>
+      <find>show_hg_file</find>
       <find>show_hg_file(</find>
-      <find>HG007</find>
-      <find>print</find>
-      <find>patternsHG</find>
-      <find>show_hg</find>
-      <find>scaled_patterns</find>
-      <find>get_mean</find>
-      <find>csv_filename</find>
-      <find>excludeperc_ps</find>
-      <find>score_df</find>
-      <find>score_df_for_std_from_file</find>
-      <find>get_mean_std</find>
       <find>show_hg_file2</find>
+      <find>(2)</find>
+      <find>NP.LOG</find>
+      <find>3.</find>
+      <find>loss_of</find>
+      <find>read_len</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -221,9 +246,16 @@
         <option value="$PROJECT_DIR$/read_hg.py" />
         <option value="$PROJECT_DIR$/graph_color.py" />
         <option value="$PROJECT_DIR$/kwargs_test.py" />
-        <option value="$PROJECT_DIR$/simulator5.py" />
-        <option value="$PROJECT_DIR$/graph_color2.py" />
+        <option value="$PROJECT_DIR$/prediction2.py" />
         <option value="$PROJECT_DIR$/elementary_prediction.py" />
+        <option value="$PROJECT_DIR$/.pytest_cache/classifier.py" />
+        <option value="$PROJECT_DIR$/simulator5.py" />
+        <option value="$PROJECT_DIR$/simulator6.py" />
+        <option value="$PROJECT_DIR$/graph_color2.py" />
+        <option value="$PROJECT_DIR$/graph_color2_driver.py" />
+        <option value="$PROJECT_DIR$/classifier.py" />
+        <option value="$PROJECT_DIR$/graph_creation.py" />
+        <option value="$PROJECT_DIR$/description.md" />
       </list>
     </option>
   </component>
@@ -237,7 +269,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -249,6 +280,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -269,8 +301,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python tests.pytest in elementary_prediction.py">
-    <configuration name="graph_color" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.graph_creation">
+    <configuration name="classifier" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="TandemReyeats" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -283,7 +315,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/graph_color.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/classifier.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -292,7 +324,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="graph_color2" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="graph_color2_driver" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="TandemReyeats" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -305,7 +337,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/graph_color2.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/graph_color2_driver.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -314,7 +346,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="kwargs_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="graph_creation" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="TandemReyeats" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -327,7 +359,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/kwargs_test.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/graph_creation.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -336,7 +368,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="simulator5" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="prediction2" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="TandemReyeats" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -349,7 +381,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/simulator5.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/prediction2.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -358,29 +390,35 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest in elementary_prediction.py" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="simulator6" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="TandemReyeats" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_keywords" value="&quot;&quot;" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/elementary_prediction.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/simulator6.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.pytest in elementary_prediction.py" />
-        <item itemvalue="Python.graph_color2" />
-        <item itemvalue="Python.simulator5" />
-        <item itemvalue="Python.kwargs_test" />
-        <item itemvalue="Python.graph_color" />
+        <item itemvalue="Python.graph_creation" />
+        <item itemvalue="Python.graph_color2_driver" />
+        <item itemvalue="Python.prediction2" />
+        <item itemvalue="Python.classifier" />
+        <item itemvalue="Python.simulator6" />
       </list>
     </recent_temporary>
   </component>
@@ -427,37 +465,48 @@
       <workItem from="1554585578310" duration="3225000" />
       <workItem from="1554750469405" duration="3823000" />
       <workItem from="1555020670245" duration="1812000" />
+      <workItem from="1555022569382" duration="16276000" />
+      <workItem from="1555778284187" duration="190000" />
+      <workItem from="1556328330100" duration="1268000" />
+      <workItem from="1556726271504" duration="14721000" />
+      <workItem from="1556806889285" duration="25062000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="pytest_in_elementary_prediction_py - 2019.04.11 at 18h 37m 24s.xml">
+    <history-entry file="pytest_in_elementary_prediction_py - 2019.04.11 at 18h 52m 24s.xml">
       <configuration name="pytest in elementary_prediction.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest_in_elementary_prediction_py - 2019.04.11 at 18h 37m 42s.xml">
+    <history-entry file="pytest_in_elementary_prediction_py - 2019.04.11 at 18h 52m 48s.xml">
       <configuration name="pytest in elementary_prediction.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest_in_elementary_prediction_py - 2019.04.11 at 18h 39m 36s.xml">
+    <history-entry file="pytest_in_elementary_prediction_py - 2019.04.11 at 18h 54m 14s.xml">
       <configuration name="pytest in elementary_prediction.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest_in_elementary_prediction_py - 2019.04.11 at 18h 40m 10s.xml">
+    <history-entry file="pytest_in_elementary_prediction_py - 2019.04.11 at 19h 02m 41s.xml">
       <configuration name="pytest in elementary_prediction.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest_in_elementary_prediction_py - 2019.04.11 at 18h 40m 32s.xml">
+    <history-entry file="pytest_in_elementary_prediction_py - 2019.04.11 at 19h 05m 30s.xml">
       <configuration name="pytest in elementary_prediction.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest_in_elementary_prediction_py - 2019.04.11 at 18h 40m 57s.xml">
+    <history-entry file="pytest_in_elementary_prediction_py - 2019.04.11 at 19h 08m 28s.xml">
       <configuration name="pytest in elementary_prediction.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest_in_elementary_prediction_py - 2019.04.11 at 18h 41m 01s.xml">
+    <history-entry file="pytest_in_elementary_prediction_py - 2019.04.12 at 03h 43m 08s.xml">
       <configuration name="pytest in elementary_prediction.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest_in_elementary_prediction_py - 2019.04.11 at 18h 41m 21s.xml">
+    <history-entry file="pytest_in_elementary_prediction_py - 2019.04.12 at 03h 44m 08s.xml">
+      <configuration name="pytest in elementary_prediction.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_elementary_prediction_py - 2019.04.12 at 03h 44m 44s.xml">
+      <configuration name="pytest in elementary_prediction.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_elementary_prediction_py - 2019.04.12 at 04h 04m 18s.xml">
       <configuration name="pytest in elementary_prediction.py" configurationId="tests" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="163761000" />
+    <option name="totallyTimeSpent" value="221278000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -472,12 +521,12 @@
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49947754" visible="true" weight="0.123931624" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49947754" visible="true" weight="0.13003664" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.5005225" side_tool="true" weight="0.21001221" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.20898642" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.26227796" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39916405" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -491,7 +540,7 @@
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" weight="0.46642247" />
+      <window_info anchor="right" id="SciView" order="3" weight="0.48107448" />
       <window_info anchor="right" id="R Graphics" order="4" weight="0.32967034" />
       <window_info anchor="right" id="R Packages" order="5" weight="0.32967034" />
       <window_info anchor="right" id="Database" order="6" weight="0.32967034" />
@@ -520,72 +569,15 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/py_sim.py" />
-    <entry file="file://$PROJECT_DIR$/bed_read.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="61" column="13" lean-forward="true" selection-start-line="61" selection-start-column="13" selection-end-line="61" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/simulator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1830">
-          <caret line="124" column="37" selection-start-line="124" selection-start-column="37" selection-end-line="124" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/FROMANDREY_pysim.py" />
     <entry file="file://$PROJECT_DIR$/lib_varaince_filter.py" />
-    <entry file="file://$PROJECT_DIR$/simulator2_analysis.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" selection-start-line="4" selection-end-line="16" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/VSB_LSTM.py" />
     <entry file="file://$PROJECT_DIR$/py_sim2.py" />
     <entry file="file://$PROJECT_DIR$/case_study_question.py" />
-    <entry file="file://$PROJECT_DIR$/simulator2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="139" column="34" lean-forward="true" selection-start-line="139" selection-start-column="24" selection-end-line="139" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/simulator4_exclusively_for_std.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1035">
           <caret line="74" column="23" selection-start-line="74" selection-start-column="23" selection-end-line="74" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hg_modifhy.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="6" column="35" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bed_read2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="11" column="59" selection-start-line="11" selection-start-column="59" selection-end-line="11" selection-end-column="59" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
@@ -602,9 +594,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/elementary_prediction.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="562">
+          <caret line="115" column="22" selection-start-line="115" selection-start-column="22" selection-end-line="115" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/simulator3.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1500">
+        <state relative-caret-position="825">
           <caret line="103" column="17" selection-start-line="103" selection-start-column="17" selection-end-line="103" selection-end-column="17" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
@@ -612,9 +614,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/bed_read.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="61" column="13" lean-forward="true" selection-start-line="61" selection-start-column="13" selection-end-line="61" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hg_modifhy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="35" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/read_hg.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
+        <state relative-caret-position="540">
           <caret line="36" column="21" selection-start-line="36" selection-start-column="21" selection-end-line="36" selection-end-column="21" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
@@ -622,9 +641,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/simulator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="652">
+          <caret line="124" column="37" selection-start-line="124" selection-start-column="37" selection-end-line="124" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/simulator2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="139" column="34" lean-forward="true" selection-start-line="139" selection-start-column="24" selection-end-line="139" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/simulator2_analysis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="667">
+          <caret line="180" lean-forward="true" selection-start-line="180" selection-end-line="180" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/kwargs_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1335">
+        <state relative-caret-position="877">
           <caret line="92" column="13" selection-start-line="92" selection-start-column="13" selection-end-line="92" selection-end-column="13" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
@@ -632,34 +681,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/graph_color.py">
+    <entry file="file://$PROJECT_DIR$/bed_read2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5940">
-          <caret line="402" column="4" selection-start-line="402" selection-start-column="4" selection-end-line="402" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/simulator5.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-148">
-          <caret line="117" column="37" selection-start-line="117" selection-start-column="37" selection-end-line="117" selection-end-column="37" />
+        <state relative-caret-position="165">
+          <caret line="11" column="59" selection-start-line="11" selection-start-column="59" selection-end-line="11" selection-end-column="59" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.pytest_cache/classifier.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/graph_color.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="444">
+          <caret line="428" column="10" selection-start-line="428" selection-start-column="10" selection-end-line="428" selection-end-column="10" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/graph_color2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="238" column="62" selection-start-line="238" selection-start-column="62" selection-end-line="238" selection-end-column="62" />
+        <state relative-caret-position="5202">
+          <caret line="598" lean-forward="true" selection-start-line="598" selection-end-line="598" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
             <element signature="e#222#531#0" />
-            <element signature="e#572#748#0" />
             <element signature="e#789#965#0" />
             <element signature="e#1057#1135#0" />
             <element signature="e#1193#1382#0" />
@@ -667,15 +718,70 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/elementary_prediction.py">
+    <entry file="file://$PROJECT_DIR$/simulator6.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="64" column="13" lean-forward="true" selection-start-line="64" selection-start-column="13" selection-end-line="64" selection-end-column="13" />
+        <state relative-caret-position="598">
+          <caret line="62" column="53" lean-forward="true" selection-start-line="62" selection-start-column="53" selection-end-line="62" selection-end-column="53" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#100#1234#0" />
-            <element signature="e#235#478#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/graph_color2_driver.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="19" lean-forward="true" selection-start-column="19" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/simulator5.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="136" column="12" selection-start-line="136" selection-start-column="12" selection-end-line="136" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/prediction2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="159" column="39" selection-start-line="159" selection-start-column="39" selection-end-line="159" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classifier.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="315" column="27" lean-forward="true" selection-start-line="315" selection-start-column="27" selection-end-line="315" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/graph_creation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="489" column="38" lean-forward="true" selection-start-line="489" selection-start-column="38" selection-end-line="489" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/description.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="259">
+            <caret line="40" column="79" selection-start-line="40" selection-start-column="79" selection-end-line="40" selection-end-column="79" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
