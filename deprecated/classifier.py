@@ -6,6 +6,11 @@ from sklearn import linear_model
 from sklearn.neighbors import KNeighborsClassifier
 from scipy.stats import linregress
 
+'''
+Load the human genome file
+Filter it before returning
+it in dataframe form
+'''
 def load_hg_file(file_name):
     file_path = "/Users/mkorovkin/Desktop/marzd/" + file_name + ".csv"
 
@@ -32,12 +37,19 @@ def load_hg_file(file_name):
 
     return df
 
+'''
+Compute a linear regression
+using scipy's linregress
+'''
 def lin(dataset_x, dataset_y):
     # First definition of loss:
     b1h, b0h, _, _, _ = linregress(dataset_x, dataset_y)
 
     return b1h, b0h
 
+'''
+Calculate the SINH loss of the model
+'''
 def loss_of(dataset_eq, equation):
     b0 = equation[1]
     b1 = equation[0]
@@ -47,6 +59,9 @@ def loss_of(dataset_eq, equation):
 
     return np.sinh(np.abs((b0 - b0h) / b0) + np.abs((b1 - b1h) / b1))
 
+'''
+Calculate the chi-squared loss of the model 
+'''
 def loss_of_chi_sq(dataset_eq, equation):
     b0 = equation[1]
     b1 = equation[0]
@@ -56,9 +71,15 @@ def loss_of_chi_sq(dataset_eq, equation):
 
     return np.abs((b0 - b0h) / b0) ** 2 + np.abs((b1 - b1h) / b1) ** 2
 
+'''
+Simple indexing function for uniqueness
+'''
 def hash_func(i, j):
     return 5 ** i + 5 ** j
 
+'''
+Calculate all possible combinations of elements
+'''
 def combinations_of_2(elements):
     set = {}
 
@@ -71,6 +92,10 @@ def combinations_of_2(elements):
 
     return set
 
+'''
+Compute a forwards variable selection algorithm
+based on one of the loss functions
+'''
 def iterative_loss(dataset_x, dataset_y, equation_set, use_tuple=False):
     b1h, b0h = lin(dataset_x, dataset_y)
 
@@ -112,6 +137,9 @@ def iterative_loss(dataset_x, dataset_y, equation_set, use_tuple=False):
 
     return equation_set
 
+'''
+Compute the loss of the model
+'''
 def selection_loss(y_dataset_labels, x_selection, eq):
     predicted_values = x_selection * eq[0] + eq[1]
 
@@ -129,6 +157,10 @@ def get_x_y_selection(dataset_x, dataset_y, selections):
 
     return x_selection, y_dataset_labels
 
+'''
+Compute a backwards variable selection algorithm
+based on one of the loss functions
+'''
 def iterative_loss_with_selection(dataset_x, dataset_y, equation_set, selections):
     x_selection, y_dataset_labels = get_x_y_selection(dataset_x, dataset_y, selections)
 

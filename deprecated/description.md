@@ -26,7 +26,7 @@ These tests were run under the following conditions:
 An approach was made to discard the lowest percentiles of pattern sizes; however, this
 did not yield any useful results as it only gave more power to points of high influence.
 
-<b>Misc. finding:</b> the mean copy number specific to the dataset, when excluding all
+<b>Finding note 1:</b> the mean copy number specific to the dataset, when excluding all
 copy numbers of 8, was found to be ```3.8```. Thus, theoretical gain/loss trend lines
 were computed by scaling the 0/0 homozygous genotype trend line.
 
@@ -64,15 +64,18 @@ given genotype; it was found that the <i>correct functionality</i> of this algor
 largely impacted by the pattern size/array length of the data point in question
 (specifically, with higher ratios of array-length-to-pattern-length, the classification
 was more accurate; with lower ratios, it was more prone to errors)
+* Each genotypes line was calculated using the method described in <b>finding note 1.</b>
 
 <i>The algorithms were only tested on HG001, HG002, and HG007. More data would be needed
 in order to validate the algorithm's functionality.</i>
 
 # Part 3: misc. notes
-#### Predicting array length based on <i>inside hit/flank ratio</i> and <i>pattern size</i>
+####Predicting array length based on <i>inside hit/flank ratio</i> and <i>pattern size</i>
 
 Results:
 * In order to predict array length of a given data point, a quadratic curve was fit to
 the data; it was able to model the long run trend relatively accurately
 * The short run trend, however, was better modeled by a linear model; thus, it was
 concluded that using a piece-wise function for predicting array length would be optimal 
+
+Github repository: https://github.com/mkorovkin2/tandem-rep-mkorovkin

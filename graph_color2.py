@@ -362,7 +362,7 @@ def run_script(read_length, smooth_std, excludeperc_ps=-0.7, excludeperc_arrayle
                 color=[0, 0],
                 colorscale='Greys',
             ),
-            name="(1)+Std based on simulations"
+            name="(1) + Std based on simulations"
         )
 
         trace0_2 = go.Scatter(
@@ -374,7 +374,7 @@ def run_script(read_length, smooth_std, excludeperc_ps=-0.7, excludeperc_arrayle
                 color=[0, 0],
                 colorscale='Greys',
             ),
-            name="(1)-Std based on simulations"
+            name="(1) - Std based on simulations"
         )
 
         trace0 = go.Scatter(
@@ -432,7 +432,7 @@ def run_script(read_length, smooth_std, excludeperc_ps=-0.7, excludeperc_arrayle
             colorscale='Greys',
             showscale=True
         ),
-        name="(0/0) - Expected regression line"
+        name="(1) (0/0) - regression line - simulated set"
     )
 
     trace1_1 = go.Scatter(
@@ -444,7 +444,7 @@ def run_script(read_length, smooth_std, excludeperc_ps=-0.7, excludeperc_arrayle
             colorscale='Greys',
             showscale=True
         ),
-        name="(0/0) - Std. Lines (+) reg. line"
+        name="(1) (0/0) - Std. Lines (+) reg. line"
     )
 
     trace1_2 = go.Scatter(
@@ -456,7 +456,7 @@ def run_script(read_length, smooth_std, excludeperc_ps=-0.7, excludeperc_arrayle
             colorscale='Greys',
             showscale=True
         ),
-        name="(0/0) - Std. Lines (-) reg. line"
+        name="(1) (0/0) - Std. Lines (-) reg. line"
     )
 
     ########### TRACE of 0/-1
@@ -482,7 +482,7 @@ def run_script(read_length, smooth_std, excludeperc_ps=-0.7, excludeperc_arrayle
             colorscale='Greys',
             showscale=True
         ),
-        name="(0/-1) - Expected regression line"
+        name="(1) (0/-1) - regression line - simulated set"
     )
 
     ########### TRACE of 0/1
@@ -508,7 +508,7 @@ def run_script(read_length, smooth_std, excludeperc_ps=-0.7, excludeperc_arrayle
             colorscale='Greys',
             showscale=True
         ),
-        name="(0/1) - Expected regression line"
+        name="(1) (0/1) - regression line - simulated set"
     )
 
     ########### TRACE of 1/1
@@ -534,7 +534,7 @@ def run_script(read_length, smooth_std, excludeperc_ps=-0.7, excludeperc_arrayle
             colorscale='Greys',
             showscale=True
         ),
-        name="(1/1) - Expected regression line"
+        name="(1) (1/1) - regression line - simulated set"
     )
 
     ########### TRACE of -1/-1
@@ -560,7 +560,7 @@ def run_script(read_length, smooth_std, excludeperc_ps=-0.7, excludeperc_arrayle
             colorscale='Greys',
             showscale=True
         ),
-        name="(-1/-1) - Expected regression line"
+        name="(1) (-1/-1) - regression line - simulated set"
     )
 
     def get_written_std(read_length, smooth=False):
@@ -573,7 +573,7 @@ def run_script(read_length, smooth_std, excludeperc_ps=-0.7, excludeperc_arrayle
             input_path = "/Users/mkorovkin/Desktop/graphs_marzd/std_df_cne8_250.csv"
         temp_df = pd.read_csv(input_path)
 
-        stda = temp_df['stda'] * 1.96
+        stda = temp_df['stda'] # * 1.96
         stdx = temp_df['stdx']
 
         if not smooth:
@@ -641,7 +641,8 @@ def run_script(read_length, smooth_std, excludeperc_ps=-0.7, excludeperc_arrayle
             # trace1_1, trace1_2,
             trace1_0, trace2_0, trace3_0, trace4_0, trace5_0,
             # trace0_0, trace0_1, trace0_2,
-            trace_std, trace_stdm, trace_stdp]#, trace1, trace1_0, trace1_1, trace1_2]
+            trace_std, trace_stdm, trace_stdp,
+            trace1_0, trace1_1, trace1_2]#, trace1, trace1_0, trace1_1, trace1_2]
 
     py.plot(go.Figure(data, layout), filename='scatter-plot-with-colorscale')
 

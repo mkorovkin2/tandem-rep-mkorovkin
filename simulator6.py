@@ -1,5 +1,4 @@
 import numpy as np
-from numpy import random as rand
 import matplotlib.pyplot as plt
 from scipy.stats import linregress
 import pandas as pd
@@ -9,7 +8,6 @@ def sim_adv_new(read_length, A, F, frag_mean, frag_std, sim_times, gain_loss):
     C = 355
     g = 10000
     G = g + A + g
-    number_fragments = np.int32(np.ceil(C * (A) / frag_mean))
     number_fragments_from_g = np.int32(C * G / frag_mean)
 
     # Lists used for tracking read hits/misses
@@ -32,9 +30,7 @@ def sim_adv_new(read_length, A, F, frag_mean, frag_std, sim_times, gain_loss):
         F_lower = 0 + random_array_location
         F_lower_bound = F * 0.5 + random_array_location
         F_upper = A_upper + F * 0.25
-        F_upper_bound = A_upper + read_length# F_upper + F * 0.75
-
-        # print(F_lower, F_lower_bound, A_lower, A_upper, F_upper, F_upper_bound)
+        F_upper_bound = A_upper + read_length
 
         # Iterate through fragment array, adding 2 reads for each fragment to STARTING_POINTS
         for index in range(len(random_normal_values)):
@@ -60,10 +56,10 @@ def init_sim(R, gain_loss):
     mAlist = list()
     sAlist = list()
     for A in Alist:
-        mean, std = sim_adv_new(R, A, np.int32(R * 0.5), 550, 150, 100, gain_loss)
+        mean, std = sim_adv_new(R, A, np.int32(R * 0.5), 550, 150, 500, gain_loss)
         mAlist.append(mean)
         sAlist.append(std * 1.96)
-        #print(R, A)
+        print(A)
 
     plt.errorbar(Alist, mAlist, yerr=[sAlist, sAlist])
     print(linregress(Alist, mAlist)[0:2])
@@ -90,8 +86,6 @@ mA0, sA0 = init_sim(READ_LENGTH[0], gain_loss)
 mA1, sA1 = init_sim(READ_LENGTH[1], gain_loss)
 mA2, sA2 = init_sim(READ_LENGTH[2], gain_loss)
 
-exit(0)
-
 overall_df = pd.DataFrame(data={"mA100": mA0,
                                 "sA100": sA0,
                                 "mA148": mA1,
@@ -101,6 +95,6 @@ overall_df = pd.DataFrame(data={"mA100": mA0,
                                 }
                           )
 
-overall_df.to_csv("/Users/mkorovkin/Desktop/marzd/output_statistics_"
+overall_df.to_csv("/Users/mkorovkin/Desktop/output_statistics_"
                   + str(np.int32(np.ceil(gain_loss))) + str(np.int32(np.ceil(gain_loss)))
-                  + ".csv")
+                  + "_new.csv")

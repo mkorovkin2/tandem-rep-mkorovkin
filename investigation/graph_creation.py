@@ -481,7 +481,7 @@ def f(x, a, b, c):
 
 from scipy.optimize import curve_fit
 
-# df_00 = df_n11 #
+df_00 = df_11 #
 
 popt, _ = curve_fit(f, np.log(df_00['pattern_size'] * df_00['ratio'] + 1), df_00['array_length'])
 
