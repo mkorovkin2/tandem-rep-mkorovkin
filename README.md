@@ -45,11 +45,6 @@ associated with a certain human genome dataset; the algorithm functioned with
 approximately 44%
 
 ***
-#### Current Work
-<i>Notable conditions of data: 1) flanks are kept constant, equal to their mean
-across the 0/0 genotype dataset of a simulated dataset, 2) </i>
-
-***
 #### Results & Points
 1. More data would be helpful, since (as seen on the simulator) simple standard
 deviation-based classification of points is not robust; there is too much noise
@@ -83,3 +78,41 @@ tree, random forest); the performance and consistency of each one will be
 investigated
     * The data will also be screened under statistical tests such as Chi-squared
     and F, in hopes of capturing differences in overall dataset variance
+
+***
+#### Current Work
+
+Notable conditions of data:\
+1. flanks are kept constant, equal to their mean across the 0/0 genotype dataset of a simulated dataset
+2. array lengths above 5000 are dropped
+3. indistinguishable TRIDs are dropped
+
+In addressing the problem of classifying genotypes, 7 different classification algorithms were investigated. Optimally-performing ones are discussed below.
+
+#### Raw Classification Results
+
+| Metric | RandomForestRegressor | SupportVectorClassifier | GaussianProcessRegressor | BaggingClassifier | GradientBoostingClassifier | GradientBoostingRegressor | Multiple Linear Regression | Definition |
+|---|---|---|---|---|---|---|---|---|
+| Precision        | 0.513 | 0.815 | 0.513 | 0.564 | 0.724 | 0.733 | 0.967 | TP / (TP + FP), rate of true positives out of all positives |
+| Recall           | 0.651 | 0.516 | 0.609 | 0.630 | 0.583 | 0.588 | 0.503 | TP / (TP + FN), true positive rate |
+| Specificity      | 0.794 | 0.920 | 0.759 | 0.830 | 0.951 | 0.955 | 0.989 | TN / (TN + FP), true negative rate |
+| False Pos. Rate  | 0.349 | 0.484 | 0.391 | 0.370 | 0.417 | 0.419 | 0.497 | 1 - recall |
+| False Neg. Rate  | 0.206 | 0.080 | 0.240 | 0.172 | 0.048 | 0.044 | 0.011 | 1 - specificity |
+| F1-score         | 0.574 | **0.632** | 0.556 | 0.595 | **0.646** | **0.647** | **0.661** | harmonic mean of precision and recall; [worst=0, best=1] |
+
+Notes:\
+* For context: what fraction of non-0/0 are classified as non-0/0 **(true positive)**
+* For context: what fraction of those classified as non-0/0 are, in fact, 0/0 **(false  positive)**
+
+For reducing the rate of *false positives*, useful classifiers:\
+* SupportVectorClassifier
+* GradientBoostingClassifier
+* GradientBoostingRegressor
+* Multiple Linear Regression
+
+#### Classifier Overview
+
+| Cost/Benefit | Support Vectors                            | Gradient Boosting        | Linear Regression                                                 |
+|--------------|--------------------------------------------|--------------------------|-------------------------------------------------------------------|
+| Cost         | Better for unbalanced data                 | Better for discrete data | Constrained in its potential (captures only linear relationships) |
+| Benefit      | Can find linear separation (almost always) | Very robust performance  | Versatile and easy-to-understand                                  |

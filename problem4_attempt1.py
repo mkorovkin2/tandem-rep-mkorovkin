@@ -291,6 +291,49 @@ def misclassified(preds, correct):
         -2: score_direct(correct[correct == -2], preds[correct == -2])
     }
 
+
+def take_positive(array):
+    return np.array([1 if x > 0 else 0 for x in array])
+
+
+def precision(y, y_pred):
+    precision = y.sum() / (y.sum() + y_pred.sum())
+    return precision
+
+
+def recall(y, y_pred):
+    false_negatives = take_positive(np.array((-1 * y_pred) + y, dtype=np.int8)).sum()
+    recall = y.sum() / (y.sum() + false_negatives.sum())
+    return recall
+
+
+def specificity(y, y_pred):
+    false_positives = take_positive(np.array(y_pred - y, dtype=np.int8)).sum()
+    specificity = (1 - y).sum() / ((1 - y).sum() + false_positives.sum())
+    return specificity
+
+
+def false_positive_rate(y, y_pred):
+    return 1 - specificity(y, y_pred)
+
+
+def false_negative_rate(y, y_pred):
+    return 1 - recall(y, y_pred)
+
+
+def f_score(y, y_pred):  # best is 1, worst is 0
+    return 2 * precision(y, y_pred) * recall(y, y_pred) / (precision(y, y_pred) + recall(y, y_pred))
+
+def fraction_misclassified_00(y, y_pred):
+    return take_positive(y_pred - y).sum() / y.sum()
+
+def matthews(y, y_pred):
+    TP = recall(y, y_pred)
+    TN = specificity(y, y_pred)
+    FP = false_positive_rate(y, y_pred)
+    FN = false_negative_rate(y, y_pred)
+    return (TP * TN - FP * FN) / np.sqrt((TP + FP) * (TP + FN) * (TN + FP) * (TN + FN))
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 dataset = simulation_set()
@@ -302,7 +345,11 @@ y_columns = ['label']
 dataset_X = dataset[x_columns]
 dataset_y = dataset[y_columns]
 
-train_X, test_X, train_y, test_y = train_test_split(dataset_X, dataset_y, test_size=0.2)
+df_sub00 = dataset.loc[dataset['genotype'] == '0/0']
+df_sub01 = dataset.loc[dataset['genotype'] == '0/1']
+df_sub00 = df_sub00.append(df_sub01)
+
+train_X, test_X, train_y, test_y = train_test_split(df_sub00[["array_length", "ratio"]], df_sub00[["label"]], test_size=0.2)#dataset_X, dataset_y, test_size=0.2)
 
 print(train_X.shape)
 
@@ -323,9 +370,22 @@ for (reg, lab) in (rfr, "RandomForestRegressor"),\
                   (gbr, "GradientBoostingRegressor"):
     classifier = reg.fit(train_X, train_y.label)
     preds = classifier.predict(test_X)
+    preds = np.array([0 if x < 0.5 else 1 for x in preds])
+
+    y_actual = np.array(test_y.label)
+
+    string_construct = ""
 
     print("---{}---".format(lab))
-    print("{} direct accuracy score: {}".format(lab,
+    for (yy, zz) in [(precision, "Precision"), (recall, "Recall"),
+                     (specificity, "Specificity"), (false_positive_rate, "FPR"),
+                     (false_negative_rate, "FNR"), (f_score, "F score"),
+                     (fraction_misclassified_00, "Fraction of 0/0's misclassified"), (matthews, "MCC")]:
+        print(zz + ": {}".format(yy(y_actual, preds)))# print(zz, yy(y_actual, preds))
+        # string_construct
+
+    print("\n")
+    '''print("{} direct accuracy score: {}".format(lab,
                                                 np.round(score_direct(preds, test_y.label), decimals=4)
                                                 ))
     print("{} MAE score: {}".format(lab,
@@ -336,7 +396,7 @@ for (reg, lab) in (rfr, "RandomForestRegressor"),\
                                              ))
     print("Breakdown of individual accuracies for {}".format(lab))
     score_individually(preds, np.array(test_y.label))
-    print("\n")
+    '''
 
     # print("{} bounds: {}".format(lab, close_round(preds, np.array(test_y.label), learning_rate=0.0001)))
     # print(adjacent([-1, 1, 2]))

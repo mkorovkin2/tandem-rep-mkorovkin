@@ -2,31 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cec783f4-3539-47f8-b443-8e5d5911c199" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/problem4_attempt1.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/problem4_keras.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator6_analysis.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bed_read.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bed_read2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classifier.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/description.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/elementary_prediction.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/graph_color.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/graph_color2.py" beforeDir="false" afterPath="$PROJECT_DIR$/graph_color2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/graph_color2_driver.py" beforeDir="false" afterPath="$PROJECT_DIR$/graph_color2_driver.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/graph_creation.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hg_modifhy.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/kwargs_test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/prediction2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/read_hg.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/simulator.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/simulator2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/simulator2_analysis.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/simulator2_analysis_MODIFIED.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/simulator3.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/simulator4_exclusively_for_std.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/simulator5.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/simulator6.py" beforeDir="false" afterPath="$PROJECT_DIR$/simulator6.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/problem4_attempt1.py" beforeDir="false" afterPath="$PROJECT_DIR$/problem4_attempt1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/problem4_keras.py" beforeDir="false" afterPath="$PROJECT_DIR$/problem4_keras.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,9 +19,10 @@
     <SUITE FILE_PATH="coverage/TandemReyeats$prediction2.coverage" NAME="prediction2 Coverage Results" MODIFIED="1556869898204" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TandemReyeats$graph_creation.coverage" NAME="graph_creation Coverage Results" MODIFIED="1560898750975" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TandemReyeats$py_sim2.coverage" NAME="py_sim2 Coverage Results" MODIFIED="1551416624396" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/TandemReyeats$graph_color2_driver.coverage" NAME="graph_color2_driver Coverage Results" MODIFIED="1562846684462" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TandemReyeats$problem4_keras.coverage" NAME="problem4_keras Coverage Results" MODIFIED="1563481266738" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TandemReyeats$graph_color2_driver.coverage" NAME="graph_color2_driver Coverage Results" MODIFIED="1563325245632" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TandemReyeats$simulator2_analysis_MODIFIED.coverage" NAME="simulator2_analysis_MODIFIED Coverage Results" MODIFIED="1553665514972" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/TandemReyeats$problem4_attempt1.coverage" NAME="problem4_attempt1 Coverage Results" MODIFIED="1562846270377" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TandemReyeats$problem4_attempt1.coverage" NAME="problem4_attempt1 Coverage Results" MODIFIED="1563481170379" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TandemReyeats$simulator4_exclusively_for_std.coverage" NAME="simulator4_exclusively_for_std Coverage Results" MODIFIED="1553660926624" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TandemReyeats$bed_read.coverage" NAME="bed_read Coverage Results" MODIFIED="1550851285380" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TandemReyeats$interview_question.coverage" NAME="interview_question Coverage Results" MODIFIED="1549524478262" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -88,7 +68,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/simulator6.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="765">
+            <state relative-caret-position="15">
               <caret line="54" column="4" selection-start-line="54" selection-start-column="4" selection-end-line="54" selection-end-column="4" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
@@ -97,7 +77,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/simulator6_analysis.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
@@ -113,8 +93,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="703">
-                <caret line="49" column="59" selection-start-line="49" selection-start-column="59" selection-end-line="49" selection-end-column="59" />
+              <first_editor relative-caret-position="480">
+                <caret line="110" column="28" lean-forward="true" selection-start-line="110" selection-start-column="28" selection-end-line="110" selection-end-column="28" />
               </first_editor>
               <second_editor />
             </state>
@@ -133,8 +113,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/graph_color2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="575" column="32" selection-start-line="575" selection-start-column="32" selection-end-line="575" selection-end-column="32" />
+            <state relative-caret-position="-3059">
+              <caret line="409" column="29" selection-start-line="409" selection-start-column="26" selection-end-line="409" selection-end-column="29" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
                 <element signature="e#222#531#0" />
@@ -149,8 +129,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/problem4_attempt1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="296" column="20" lean-forward="true" selection-start-line="296" selection-start-column="20" selection-end-line="296" selection-end-column="20" />
+            <state relative-caret-position="212">
+              <caret line="382" column="104" lean-forward="true" selection-start-line="382" selection-start-column="104" selection-end-line="382" selection-end-column="104" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -158,11 +138,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/problem4_keras.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="65" lean-forward="true" selection-start-line="21" selection-start-column="65" selection-end-line="21" selection-end-column="65" />
+            <state relative-caret-position="157">
+              <caret line="87" column="49" selection-start-line="87" selection-start-column="49" selection-end-line="87" selection-end-column="49" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -181,12 +161,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>hg_</find>
-      <find>pandas_analyze_new</find>
-      <find>trace_stdp</find>
-      <find>get_written_std</find>
-      <find>smooth</find>
-      <find>ratio</find>
       <find>show_hg_file</find>
       <find>show_hg_file(</find>
       <find>show_hg_file2</find>
@@ -211,6 +185,12 @@
       <find>score_indiv</find>
       <find>gressio</find>
       <find>stda</find>
+      <find>X_train</find>
+      <find>y_pred</find>
+      <find>care</find>
+      <find>round</find>
+      <find>200</find>
+      <find>0/0</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -249,11 +229,11 @@
         <option value="$PROJECT_DIR$/description.md" />
         <option value="$PROJECT_DIR$/simulator6.py" />
         <option value="$PROJECT_DIR$/simulator6_analysis.py" />
-        <option value="$PROJECT_DIR$/problem4_keras.py" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/graph_color2_driver.py" />
         <option value="$PROJECT_DIR$/graph_color2.py" />
+        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/problem4_attempt1.py" />
+        <option value="$PROJECT_DIR$/problem4_keras.py" />
       </list>
     </option>
   </component>
@@ -299,7 +279,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.graph_color2_driver">
+  <component name="RunManager" selected="Python.problem4_keras">
     <configuration name="graph_color2_driver" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="TandemReyeats" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -322,28 +302,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="graph_creation" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="TandemReyeats" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/graph_creation.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="problem4_attempt1" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="TandemReyeats" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -358,6 +316,28 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/problem4_attempt1.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="problem4_keras" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="TandemReyeats" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/problem4_keras.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -412,11 +392,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.graph_color2_driver" />
+        <item itemvalue="Python.problem4_keras" />
         <item itemvalue="Python.problem4_attempt1" />
+        <item itemvalue="Python.graph_color2_driver" />
         <item itemvalue="Python.simulator6_analysis" />
         <item itemvalue="Python.simulator6" />
-        <item itemvalue="Python.graph_creation" />
       </list>
     </recent_temporary>
   </component>
@@ -474,7 +454,8 @@
       <workItem from="1560807975910" duration="10206000" />
       <workItem from="1561820084726" duration="14221000" />
       <workItem from="1562530946554" duration="1045000" />
-      <workItem from="1562845202416" duration="2128000" />
+      <workItem from="1562845202416" duration="11127000" />
+      <workItem from="1563399002086" duration="4056000" />
     </task>
     <servers />
   </component>
@@ -511,7 +492,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="253308000" />
+    <option name="totallyTimeSpent" value="266363000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -526,12 +507,12 @@
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49947754" visible="true" weight="0.13980465" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49947754" visible="true" weight="0.14102565" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.5005225" side_tool="true" weight="0.21001221" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.26227796" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.28840125" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39916405" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -598,27 +579,31 @@
     <entry file="file://$PROJECT_DIR$/prediction2.py" />
     <entry file="file://$PROJECT_DIR$/classifier.py" />
     <entry file="file://$PROJECT_DIR$/description.md" />
-    <entry file="file://$PROJECT_DIR$/simulator6.py">
+    <entry file="file://$USER_HOME$/.conda/envs/Attempt1/lib/python3.6/site-packages/numpy/core/numeric.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="54" column="4" selection-start-line="54" selection-start-column="4" selection-end-line="54" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="182">
+          <caret line="500" selection-start-line="500" selection-end-line="500" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/graph_color2_driver.py">
+    <entry file="file://$USER_HOME$/.conda/envs/Attempt1/lib/python3.6/site-packages/tensorflow/python/client/session.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="34" selection-start-line="2" selection-start-column="34" selection-end-line="2" selection-end-column="34" />
+        <state relative-caret-position="175">
+          <caret line="936" selection-start-line="936" selection-end-line="936" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/graph_color2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="575" column="32" selection-start-line="575" selection-start-column="32" selection-end-line="575" selection-end-column="32" />
+        <state relative-caret-position="-3059">
+          <caret line="409" column="29" selection-start-line="409" selection-start-column="26" selection-end-line="409" selection-end-column="29" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
             <element signature="e#222#531#0" />
@@ -629,33 +614,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/problem4_keras.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="65" lean-forward="true" selection-start-line="21" selection-start-column="65" selection-end-line="21" selection-end-column="65" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/problem4_attempt1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="296" column="20" lean-forward="true" selection-start-line="296" selection-start-column="20" selection-end-line="296" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="703">
-            <caret line="49" column="59" selection-start-line="49" selection-start-column="59" selection-end-line="49" selection-end-column="59" />
+          <first_editor relative-caret-position="480">
+            <caret line="110" column="28" lean-forward="true" selection-start-line="110" selection-start-column="28" selection-end-line="110" selection-end-column="28" />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/graph_color2_driver.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="34" selection-start-line="2" selection-start-column="34" selection-end-line="2" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -663,6 +635,36 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/simulator6.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="54" column="4" selection-start-line="54" selection-start-column="4" selection-end-line="54" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/problem4_attempt1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="382" column="104" lean-forward="true" selection-start-line="382" selection-start-column="104" selection-end-line="382" selection-end-column="104" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/problem4_keras.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="87" column="49" selection-start-line="87" selection-start-column="49" selection-end-line="87" selection-end-column="49" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
