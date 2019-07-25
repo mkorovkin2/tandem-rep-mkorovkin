@@ -69,8 +69,8 @@ def linear_regression():
         # def f(x): return tf.cond(tf.less(x, 0.5), lambda: 0, lambda: 1)
         y_pred = tf.add(tf.add(tf.multiply(b1, x1), tf.multiply(b2, x2)), b0)
 
-        # loss = tf.reduce_mean(tf.square(y - y_pred))
-        loss = tf.reduce_sum(tf.abs(tf.tanh(y - y_pred)))
+        loss = tf.reduce_mean(tf.square(y - y_pred))
+        # loss = tf.reduce_sum(tf.abs(tf.tanh(y - y_pred)))
 
         return x1, x2, y, y_pred, loss
 
@@ -81,7 +81,7 @@ def run(X_train, X_test, y_train, y_test):
 
     x1, x2, y, y_pred, loss = linear_regression()
 
-    optimizer = tf.train.GradientDescentOptimizer(0.000001)# (0.00000001)
+    optimizer = tf.train.GradientDescentOptimizer(0.0000001)#(0.000001)# (0.00000001)
     train_op = optimizer.minimize(loss)
 
     with tf.Session() as session:
@@ -92,7 +92,7 @@ def run(X_train, X_test, y_train, y_test):
             y: y_batch
         }
 
-        for i in range(200001):
+        for i in range(100001):#200001):
             session.run(train_op, feed_dict)
             if i % 1000 == 1:
                 print(i, "loss:", loss.eval(feed_dict))
@@ -154,7 +154,7 @@ def col_normalize(column):  # pd.Series
     return np.array(new_column)
 
 def round(array):
-    return np.array([-1 if x <= 0 else 1 for x in array])
+    return np.array([0 if x < 0.5 else 1 for x in array])
 
 def evaluate(y_test, y_pred):
     '''false_negative = np.array([0 if x >= 0 else 1 for x in (round(y_pred) - y_test)]).sum()
@@ -186,7 +186,7 @@ def evaluate(y_test, y_pred):
 
     print(pd.Series(y_pred).describe())'''
 
-    y_pred = round(np.tanh(y_pred))
+    y_pred = round(y_pred)#np.tanh(y_pred))
     # y_pred = round(y_pred)
 
     print("---")
@@ -196,12 +196,13 @@ def evaluate(y_test, y_pred):
                      (fraction_misclassified_00, "Fraction of 0/0's misclassified"), (matthews, "MCC")]:
         print(zz + ": {}".format(yy(y_test, y_pred)))
 
+np.random.seed(100)
 df = simulation_set()
 
 df_sub00 = df.loc[df['genotype'] == '0/0']
 df_sub01 = df.loc[df['genotype'] == '0/1']
 df_sub00 = df_sub00.append(df_sub01)
-df_sub00[['genotype']] = df_sub00.genotype.apply(lambda x: -1 if x == '0/0' else 1)
+df_sub00[['genotype']] = df_sub00.genotype.apply(lambda x: 0 if x == '0/0' else 1)
 #df_sub00[['genotype']] = df_sub00.genotype.apply(lambda x: 0 if x == '0/0' else 1)
 
 used_columns = ['ratio', 'array_length']

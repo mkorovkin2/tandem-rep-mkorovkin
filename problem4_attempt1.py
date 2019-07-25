@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from scipy.stats import linregress
 from sklearn.svm import SVC
+from sklearn.svm import LinearSVC
 from sklearn.gaussian_process import GaussianProcessRegressor
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.ensemble import BaggingClassifier
@@ -302,24 +303,26 @@ def precision(y, y_pred):
 
 
 def recall(y, y_pred):
-    false_negatives = take_positive(np.array((-1 * y_pred) + y, dtype=np.int8)).sum()
-    recall = y.sum() / (y.sum() + false_negatives.sum())
-    return recall
+    # false_negatives = take_positive(np.array((-1 * y_pred) + y, dtype=np.int8)).sum()
+    # recall = y.sum() / (y.sum() + false_negatives.sum())
+    true_positives = np.array([1 if (ya == 1 and yp == 1) else 0 for (ya, yp) in zip(y, y_pred)])
+    false_negatives = np.array([1 if (ya == 1 and yp == -1) else 0 for (ya, yp) in zip(y, y_pred)])
+    return true_positives.sum() / (true_positives.sum() + false_negatives.sum())
 
 
 def specificity(y, y_pred):
-    false_positives = take_positive(np.array(y_pred - y, dtype=np.int8)).sum()
-    specificity = (1 - y).sum() / ((1 - y).sum() + false_positives.sum())
-    return specificity
-
+    # false_positives = take_positive(np.array(y_pred - y, dtype=np.int8)).sum()
+    # specificity = (1 - y).sum() / ((1 - y).sum() + false_positives.sum())
+    # return specificity
+    true_negatives = np.array([1 if (ya == -1 and yp == -1) else 0 for (ya, yp) in zip(y, y_pred)])
+    false_positives = np.array([1 if (ya == -1 and yp == 1) else 0 for (ya, yp) in zip(y, y_pred)])
+    return true_negatives.sum() / (true_negatives.sum() + false_positives.sum())
 
 def false_positive_rate(y, y_pred):
-    return 1 - specificity(y, y_pred)
-
-
-def false_negative_rate(y, y_pred):
     return 1 - recall(y, y_pred)
 
+def false_negative_rate(y, y_pred):
+    return 1 - specificity(y, y_pred)
 
 def f_score(y, y_pred):  # best is 1, worst is 0
     return 2 * precision(y, y_pred) * recall(y, y_pred) / (precision(y, y_pred) + recall(y, y_pred))
@@ -353,8 +356,9 @@ train_X, test_X, train_y, test_y = train_test_split(df_sub00[["array_length", "r
 
 print(train_X.shape)
 
-rfr = RandomForestRegressor(random_state=100)
+'''
 svc = SVC(random_state=100)
+rfr = RandomForestRegressor(random_state=100)
 gpr = GaussianProcessRegressor(random_state=100)
 knn = KNeighborsClassifier()
 bcl = BaggingClassifier(random_state=100)
@@ -385,7 +389,7 @@ for (reg, lab) in (rfr, "RandomForestRegressor"),\
         # string_construct
 
     print("\n")
-    '''print("{} direct accuracy score: {}".format(lab,
+    print("{} direct accuracy score: {}".format(lab,
                                                 np.round(score_direct(preds, test_y.label), decimals=4)
                                                 ))
     print("{} MAE score: {}".format(lab,
@@ -396,8 +400,38 @@ for (reg, lab) in (rfr, "RandomForestRegressor"),\
                                              ))
     print("Breakdown of individual accuracies for {}".format(lab))
     score_individually(preds, np.array(test_y.label))
-    '''
 
     # print("{} bounds: {}".format(lab, close_round(preds, np.array(test_y.label), learning_rate=0.0001)))
     # print(adjacent([-1, 1, 2]))
     # print(adjacent([0, 1, 2]))
+'''
+
+def predict_from_tf_SVC(x_y_zip, slope, intercept):
+    # (x_val, y_val) = x_y_zip
+    class_result = [1 if (x * slope + intercept < y) else -1 for (x, y) in x_y_zip]
+    return np.array(class_result)
+
+'''svc = SVC(random_state=100, C=15000)#, probability=True)
+classifier = svc.fit(train_X, train_y.label)
+preds = classifier.predict(test_X)
+preds = np.array([-1 if x < 0.5 else 1 for x in preds])'''
+
+y_actual = np.array([-1 if x == 0 else 1 for x in test_y.label])
+print(y_actual)
+
+string_construct = ""
+
+def output_results(y_actual, preds):
+    print("---{}---".format("Results"))
+    for (yy, zz) in [(precision, "Precision"), (recall, "Recall"),
+                     (specificity, "Specificity"), (false_positive_rate, "FPR"),
+                     (false_negative_rate, "FNR"), (f_score, "F score"),
+                     (fraction_misclassified_00, "Fraction of 0/0's misclassified"), (matthews, "MCC")]:
+        print(zz + ": {}".format(yy(y_actual, preds)))
+
+#svm_slope = -a1 / a0
+#y_intercept = b / a0
+
+[[a0], [a1]] = [[2.8582766], [-0.020608412]]
+[[b]] = [[-2.540259]]
+output_results(y_actual, predict_from_tf_SVC(zip(test_X.array_length, test_X.ratio), (-a1 / a0), (b / a0)))
