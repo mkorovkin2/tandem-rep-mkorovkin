@@ -58,6 +58,61 @@ def use_ref_set():
         total_set.loc[total_set['inside_length_ratio'] > 6]
     )
 
+def simulation_set2():
+    hg_set = pd.read_csv("/Users/mkorovkin/Desktop/marzd/sim2_148bp.csv")
+
+    hg_set.drop("start", axis=1)
+    hg_set.drop("end", axis=1)
+
+    hg_set = hg_set.loc[hg_set["filter"] == "S"]
+    hg_set = hg_set.loc[hg_set["array_length"] < 15000]
+    hg_set = hg_set.loc[hg_set["pattern_size"] > 150]
+    hg_set = hg_set.loc[hg_set["left_flank"] > 0]
+    hg_set = hg_set.loc[hg_set["right_flank"] > 0]
+    hg_set = hg_set.loc[hg_set["inside_array"] > 0]
+
+    # Keep flanks static
+    lfm = hg_set.left_flank.mean()
+    rfm = hg_set.right_flank.mean()
+    # print("flanks", lfm, rfm)
+    hg_set["left_flank"] = hg_set.left_flank.apply(lambda x: lfm)
+    hg_set["right_flank"] = hg_set.right_flank.apply(lambda x: rfm)
+
+    # Calculate ratios
+    hg_set["ratio"] = hg_set.inside_array / (hg_set.left_flank + hg_set.right_flank)
+    hg_set["array_over_pattern"] = hg_set.array_length / hg_set.pattern_size
+    hg_set = hg_set.loc[hg_set["array_over_pattern"] < 10]
+
+    # prepare statistical data
+    sm = pd.read_csv("/Users/mkorovkin/Desktop/output_statistics_00_new.csv")
+    xs = np.arange(148 * 3, 148 * 40, 148)
+    ms = sm.mA148
+
+    slope1, intercept1, _, _, _ = linregress(xs, ms)
+
+    # analyze total_set
+    hg_set['inside_length_ratio'] = hg_set.inside_array / hg_set.array_length
+    hg_set['error'] = (hg_set.array_length.apply(lambda x: slope1 * x + intercept1) - hg_set.ratio) / hg_set.ratio
+
+    zin = {
+        "-1/-1": "43466",
+        "1/1": "1",
+        "0/1": "0/1",
+        "0/-1": "0/-1",
+        "0/0": "0/0",
+    }
+    nex = {
+        "43466": -2,
+        "1": 2,
+        "0/1": 1,
+        "0/-1": -1,
+        "0/0": 0,
+    }
+
+    hg_set['label'] = hg_set.genotype.apply(lambda x: nex[x])
+
+    return hg_set
+
 def simulation_set():
     hg_set = pd.read_csv("/Users/mkorovkin/Desktop/marzd/sim2_148bp.csv")
 
@@ -298,9 +353,21 @@ def take_positive(array):
 
 
 def precision(y, y_pred):
-    precision = y.sum() / (y.sum() + y_pred.sum())
-    return precision
+    true_positives = np.array([1 if (ya == 1 and yp == 1) else 0 for (ya, yp) in zip(y, y_pred)])
+    false_positives = np.array([1 if (ya == -1 and yp == 1) else 0 for (ya, yp) in zip(y, y_pred)])
+    return true_positives.sum() / (true_positives.sum() + false_positives.sum())
 
+def number_fp(y, y_pred):
+    return np.array([1 if (ya == -1 and yp == 1) else 0 for (ya, yp) in zip(y, y_pred)]).sum()
+
+def number_tp(y, y_pred):
+    return np.array([1 if (ya == 1 and yp == 1) else 0 for (ya, yp) in zip(y, y_pred)]).sum()
+
+def number_fn(y, y_pred):
+    return np.array([1 if (ya == 1 and yp == -1) else 0 for (ya, yp) in zip(y, y_pred)]).sum()
+
+def number_tn(y, y_pred):
+    return np.array([1 if (ya == -1 and yp == -1) else 0 for (ya, yp) in zip(y, y_pred)]).sum()
 
 def recall(y, y_pred):
     # false_negatives = take_positive(np.array((-1 * y_pred) + y, dtype=np.int8)).sum()
@@ -319,16 +386,13 @@ def specificity(y, y_pred):
     return true_negatives.sum() / (true_negatives.sum() + false_positives.sum())
 
 def false_positive_rate(y, y_pred):
-    return 1 - recall(y, y_pred)
+    return 1 - specificity(y, y_pred)
 
 def false_negative_rate(y, y_pred):
-    return 1 - specificity(y, y_pred)
+    return 1 - recall(y, y_pred)
 
 def f_score(y, y_pred):  # best is 1, worst is 0
     return 2 * precision(y, y_pred) * recall(y, y_pred) / (precision(y, y_pred) + recall(y, y_pred))
-
-def fraction_misclassified_00(y, y_pred):
-    return take_positive(y_pred - y).sum() / y.sum()
 
 def matthews(y, y_pred):
     TP = recall(y, y_pred)
@@ -338,23 +402,6 @@ def matthews(y, y_pred):
     return (TP * TN - FP * FN) / np.sqrt((TP + FP) * (TP + FN) * (TN + FP) * (TN + FN))
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-dataset = simulation_set()
-print(list(dataset))
-
-x_columns = ['array_length', 'pattern_size', 'array_length', 'copy_number', 'error', 'ratio']
-y_columns = ['label']
-
-dataset_X = dataset[x_columns]
-dataset_y = dataset[y_columns]
-
-df_sub00 = dataset.loc[dataset['genotype'] == '0/0']
-df_sub01 = dataset.loc[dataset['genotype'] == '0/1']
-df_sub00 = df_sub00.append(df_sub01)
-
-train_X, test_X, train_y, test_y = train_test_split(df_sub00[["array_length", "ratio"]], df_sub00[["label"]], test_size=0.2)#dataset_X, dataset_y, test_size=0.2)
-
-print(train_X.shape)
 
 '''
 svc = SVC(random_state=100)
@@ -411,27 +458,54 @@ def predict_from_tf_SVC(x_y_zip, slope, intercept):
     class_result = [1 if (x * slope + intercept < y) else -1 for (x, y) in x_y_zip]
     return np.array(class_result)
 
-'''svc = SVC(random_state=100, C=15000)#, probability=True)
-classifier = svc.fit(train_X, train_y.label)
-preds = classifier.predict(test_X)
-preds = np.array([-1 if x < 0.5 else 1 for x in preds])'''
-
-y_actual = np.array([-1 if x == 0 else 1 for x in test_y.label])
-print(y_actual)
-
-string_construct = ""
-
 def output_results(y_actual, preds):
     print("---{}---".format("Results"))
     for (yy, zz) in [(precision, "Precision"), (recall, "Recall"),
                      (specificity, "Specificity"), (false_positive_rate, "FPR"),
                      (false_negative_rate, "FNR"), (f_score, "F score"),
-                     (fraction_misclassified_00, "Fraction of 0/0's misclassified"), (matthews, "MCC")]:
+                     (number_tp, "True positive count",), (number_fp, "False positive count"),
+                     (number_tn, "True negative count"), (matthews, "MCC")]:
         print(zz + ": {}".format(yy(y_actual, preds)))
+
+'''svc = SVC(random_state=100, C=15000)#, probability=True)
+classifier = svc.fit(train_X, train_y.label)
+preds = classifier.predict(test_X)
+preds = np.array([-1 if x < 0.5 else 1 for x in preds])'''
+
+dataset = simulation_set2()
+print(list(dataset))
+
+x_columns = ['array_length', 'pattern_size', 'array_length', 'copy_number', 'error', 'ratio']
+y_columns = ['label']
+
+dataset_X = dataset[x_columns]
+dataset_y = dataset[y_columns]
+
+df_sub00 = dataset.loc[dataset['genotype'] == '0/0']
+df_sub01 = dataset.loc[dataset['genotype'] == '0/1']
+df_sub00 = df_sub00.append(df_sub01)
+
+train_X, test_X, train_y, test_y = train_test_split(df_sub00[["array_length", "ratio"]], df_sub00[["label"]], test_size=0.2)#dataset_X, dataset_y, test_size=0.2)
+
+print(train_X.shape)
+
+y_actual = np.array([-1 if x == 0 else 1 for x in train_y.label])
+print(y_actual)
+
+string_construct = ""
+
+print("Dataset size:", len(train_X.ratio))
 
 #svm_slope = -a1 / a0
 #y_intercept = b / a0
+#[[4.2805715], [-0.032344025]]
+#b: [[-3.8925476]]
 
-[[a0], [a1]] = [[2.8582766], [-0.020608412]]
-[[b]] = [[-2.540259]]
-output_results(y_actual, predict_from_tf_SVC(zip(test_X.array_length, test_X.ratio), (-a1 / a0), (b / a0)))
+a0mod = 0#0.1
+a1mod = 0.
+bmod = -0.6 # 0.5 -> very good
+
+[[a0], [a1]] = [[4.2944555 + a0mod], [-0.03241278 + a1mod]] #[[4.329528], [-0.03381853]] b: [[-3.9912481]]
+[[b]] = [[-3.9100592 + bmod]]
+
+output_results(y_actual, predict_from_tf_SVC(zip(train_X.array_length, train_X.ratio), (-a1 / a0), (b / a0)))

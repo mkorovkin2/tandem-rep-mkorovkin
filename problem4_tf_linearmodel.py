@@ -12,8 +12,10 @@ def simulation_set():
     hg_set.drop("end", axis=1)
 
     hg_set = hg_set.loc[hg_set["filter"] == "S"]
-    # hg_set = hg_set.loc[hg_set["left_flank"] > 0]
-    # hg_set = hg_set.loc[hg_set["right_flank"] > 0]
+    hg_set = hg_set.loc[hg_set["array_length"] < 15000]
+    hg_set = hg_set.loc[hg_set["pattern_size"] > 150]
+    hg_set = hg_set.loc[hg_set["left_flank"] > 0]
+    hg_set = hg_set.loc[hg_set["right_flank"] > 0]
     hg_set = hg_set.loc[hg_set["inside_array"] > 0]
 
     # Keep flanks static
@@ -25,6 +27,8 @@ def simulation_set():
 
     # Calculate ratios
     hg_set["ratio"] = hg_set.inside_array / (hg_set.left_flank + hg_set.right_flank)
+    hg_set["array_over_pattern"] = hg_set.array_length / hg_set.pattern_size
+    hg_set = hg_set.loc[hg_set["array_over_pattern"] < 10]
 
     # prepare statistical data
     sm = pd.read_csv("/Users/mkorovkin/Desktop/output_statistics_00_new.csv")
