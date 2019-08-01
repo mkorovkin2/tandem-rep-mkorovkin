@@ -318,7 +318,8 @@ def fix_misclassify(score, pred_results, misclass, bounds, learning_rate, score_
 def adjacent(tlist):
     ret_list = []
     last_added = False
-    '''for i in range(len(tlist) - 1):
+    '''
+    for i in range(len(tlist) - 1):
         if abs(tlist[i] - tlist[i + 1]) <= 1.1:
             if not last_added:
                 ret_list.append(tlist[i])
@@ -331,7 +332,8 @@ def adjacent(tlist):
                 ret_list.append(tlist[i + 1])
                 last_added = True
             else:
-                ret_list.append(tlist[i + 1])'''
+                ret_list.append(tlist[i + 1])
+    '''
 
     for i in tlist:
         if i < 2:
@@ -467,12 +469,64 @@ def output_results(y_actual, preds):
                      (number_tn, "True negative count"), (matthews, "MCC")]:
         print(zz + ": {}".format(yy(y_actual, preds)))
 
-'''svc = SVC(random_state=100, C=15000)#, probability=True)
+'''
+svc = SVC(random_state=100, C=15000)#, probability=True)
 classifier = svc.fit(train_X, train_y.label)
 preds = classifier.predict(test_X)
-preds = np.array([-1 if x < 0.5 else 1 for x in preds])'''
+preds = np.array([-1 if x < 0.5 else 1 for x in preds])
+'''
 
-dataset = simulation_set2()
+
+def mk_loss(y_true, preds): # p1, p2, pmax):
+    p1 = recall(y_true, preds)
+    p2 = precision(y_true, preds)
+    pmax = specificity(y_true, preds)
+
+    term1 = np.log(p1 * p2)
+    term2 = pmax
+    return term1 / term2 + pmax
+
+def evaluate_mk_loss(a1new, a0new, b0new, y_true):
+    preds = predict_from_tf_SVC(zip(train_X.array_length, train_X.ratio), (-a1new / a0new), (b0new / a0new))
+    return mk_loss(y_true, preds)
+
+def tune(params, epochs, arate, y_true, mods=[-1, -0.5, 0, 0.5, 1], param_rate_scale=[1, 1, 1], scale_forward=5, iter_to_complete=5):
+    loss_history = list()
+
+    for _ in range(epochs):
+        scores = []
+        change_rate = np.tanh(arate)
+
+        for i in range(len(mods)):
+            for j in range(len(mods)):
+                for k in range(len(mods)):
+                    for l in range(1, scale_forward + 1):
+                        a1new = params[0] + l * mods[i] * change_rate * param_rate_scale[0]
+                        a0new = params[1] + l * mods[j] * change_rate * param_rate_scale[1]
+                        b0new = params[2] + l * mods[k] * change_rate * param_rate_scale[2]
+
+                        nmods = [mods[i], mods[j], mods[k]]
+                        scores.append([evaluate_mk_loss(a1new, a0new, b0new, y_true), nmods])
+
+        largest_loss = sorted(scores, key=lambda tup: tup[0])[len(scores) - 1]
+
+        zeg = largest_loss[1]
+        for m in range(len(zeg)):
+            params[m] += zeg[m] * change_rate
+
+        print(loss_history)
+        if (len(loss_history) > iter_to_complete and loss_history[len(loss_history) - iter_to_complete] == largest_loss[0]):
+            print("Premature stop")
+            break
+
+        loss_history.append(largest_loss[0])
+
+    # print(loss_history)
+    return params
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+dataset = simulation_set()
 print(list(dataset))
 
 x_columns = ['array_length', 'pattern_size', 'array_length', 'copy_number', 'error', 'ratio']
@@ -485,7 +539,9 @@ df_sub00 = dataset.loc[dataset['genotype'] == '0/0']
 df_sub01 = dataset.loc[dataset['genotype'] == '0/1']
 df_sub00 = df_sub00.append(df_sub01)
 
-train_X, test_X, train_y, test_y = train_test_split(df_sub00[["array_length", "ratio"]], df_sub00[["label"]], test_size=0.2)#dataset_X, dataset_y, test_size=0.2)
+train_X, test_X, train_y, test_y = train_test_split(
+    df_sub00[["array_length", "ratio"]], df_sub00[["label"]], test_size=0.2
+)
 
 print(train_X.shape)
 
@@ -496,16 +552,26 @@ string_construct = ""
 
 print("Dataset size:", len(train_X.ratio))
 
-#svm_slope = -a1 / a0
-#y_intercept = b / a0
-#[[4.2805715], [-0.032344025]]
-#b: [[-3.8925476]]
+# svm_slope = -a1 / a0
+# y_intercept = b / a0
+# [[4.2805715], [-0.032344025]]
+# b: [[-3.8925476]]
 
-a0mod = 0#0.1
+a0mod = 0. # 0.1
 a1mod = 0.
 bmod = -0.6 # 0.5 -> very good
 
-[[a0], [a1]] = [[4.2944555 + a0mod], [-0.03241278 + a1mod]] #[[4.329528], [-0.03381853]] b: [[-3.9912481]]
+[[a0], [a1]] = [[4.2944555 + a0mod], [-0.03241278 + a1mod]] # [[4.329528], [-0.03381853]] b: [[-3.9912481]]
 [[b]] = [[-3.9100592 + bmod]]
 
-output_results(y_actual, predict_from_tf_SVC(zip(train_X.array_length, train_X.ratio), (-a1 / a0), (b / a0)))
+# params = tune([a1, a0, b], 100, 0.0001, y_actual, scale_forward=1, iter_to_complete=5)
+# print("\nParams: " + str(params) + "\n")
+
+params = [-0.0328627799985, 4.295455499996667, -4.509059200003333]
+# print("Dataset size: " + str(len(train_X.ratio)))
+
+output_results(y_actual,
+               predict_from_tf_SVC(
+                   zip(train_X.array_length, train_X.ratio),
+                   (-params[0] / params[1]),
+                   (params[2] / params[1]))) # (-a1 / a0), (b / a0)))

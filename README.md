@@ -3,6 +3,53 @@ Project lead: Gary Benson\
 Primary contributor: Michael Korovkin
 
 ***
+#### Abstract
+
+Tandem repeats are adjacent, repeated sequences in human DNA. They contribute to a
+variety of factors having to do with gene expression having to do with human
+morphological conditions. Each tandem repeat is defined by its numerical starting
+and ending position within the human genome, as well as its "copy number" (number
+of the copies of the given repeated DNA sequence). The "genotype" of an observed
+tandem repeat is defined by its copy number, reletive to its expected copy number.
+For example, a tandem repeat of genotype 0/0 would have a copy number identical to
+its expected copy number. A tandem repeat of genotype 0/1 would have a copy number
+which is larger by one half of a copy. A tandem repeat of genotype 1/1 would have
+a copy number which is larger than its reference copy number by one copy. The
+inverse applies to genotypes 0/-1 and -1/-1.
+
+This investigation was focused on developing a process to identify the genotype
+of large tandem repeats (> 1000 base pairs) through DNA read data. A dataset for
+each read length 100, 148, and 250 base pairs was assembled through a boostrapping
+method, based on real human genome data. The dataset contained data for each
+tandem repeat, specificying the following variables: tandem repeat ID, starting
+index, ending index, array length, number of read mappings inside the repeat's
+array, number of mappings on either flank sequence of the repeat's array, the
+copy number, and the repeat's pattern size. Seven real-life human DNA datasets
+were also used later in the experiment.
+
+The experiment's first step was to identify a trend between array length and the
+ratio of reads mapping inside the array, divided by the sum of the read mapings
+onto the repeat's flanks. For each read length, these relationships were
+established to be linear. Next, machine learning methods were implemented in order
+to classify tandem repeats as being either 0/0 or not 0/0. The methods
+investigated included: linear regression classification, k nearest neighbors,
+gradient boosted decision tree classification, and support vector machine
+classification. While classification accuracy was deemed to be important, false
+classification of 0/0 sequences as non-0/0 sequences was given great significance
+as well; thus, a balance between the two scores was found in the search for
+optimal classifiers.
+
+The most robust classification method was found to be a customized linear support
+vector classifier (with inputs of ratio and array length), with an alterred loss
+function which penalized false-positive classifications more so than false-negative
+classifications. This method yielded a precision of 0.95, a recall of 0.78, a
+specificity of 0.98, and a Matthew Correlation Coefficient of 0.78; the false
+positive rate was 0.02 and the false negative rate was 0.22. Further methods,
+including logistic regression and kernel support vector classifiers, are currently
+being investigated in order to further minimize the false positive and false
+negative rates.
+
+***
 #### Project Prompts
 1. How different must "critical ratios" (read count inside array divided by read
 count on flanks) be in order to statistically conclude whether the tandem repeat's
@@ -193,6 +240,18 @@ More detailed notes on SVM processes:
     7. Type of optimizer
     
 *Lowest false-positive training rate achieved was 0.4577*
+
+A method was later used to tune parameters further, past the SVM loss function
+using a non-differentiable score criterion: ```(log(recall * precision) / specificity) +
+specificity```. This criterion was optimized to a maximum point, which yielded a balance
+between precision (percentage of positives which are true positives) and specificity
+(inverse of false positive rate). This tuning was done on a subset of the overall training
+dataset, which had the following added criteria:
+1. Array length is less than 15000
+2. Pattern size is greater than 150
+3. Left, right flank counts are greater than 0
+4. Inside array counts are greater than 0
+5. Copy numbers are less than 10
 
 Future steps:
 1. Try out different optimizers: ```tf.keras.optimizers.SGD```, ```MomentumOptimizer```
