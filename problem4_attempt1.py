@@ -457,7 +457,7 @@ for (reg, lab) in (rfr, "RandomForestRegressor"),\
 
 def predict_from_tf_SVC(x_y_zip, slope, intercept):
     # (x_val, y_val) = x_y_zip
-    class_result = [1 if (x * slope + intercept < y) else -1 for (x, y) in x_y_zip]
+    class_result = [1 if (x * slope + intercept > y) else -1 for (x, y) in x_y_zip]
     return np.array(class_result)
 
 def output_results(y_actual, preds):
@@ -493,7 +493,7 @@ def evaluate_mk_loss(a1new, a0new, b0new, y_true):
 def tune(params, epochs, arate, y_true, mods=[-1, -0.5, 0, 0.5, 1], param_rate_scale=[1, 1, 1], scale_forward=5, iter_to_complete=5):
     loss_history = list()
 
-    for _ in range(epochs):
+    for epoch in range(epochs):
         scores = []
         change_rate = np.tanh(arate)
 
@@ -514,7 +514,8 @@ def tune(params, epochs, arate, y_true, mods=[-1, -0.5, 0, 0.5, 1], param_rate_s
         for m in range(len(zeg)):
             params[m] += zeg[m] * change_rate
 
-        print(loss_history)
+        print("{}: {}".format(epoch, largest_loss[0]))
+        # print(loss_history)
         if (len(loss_history) > iter_to_complete and loss_history[len(loss_history) - iter_to_complete] == largest_loss[0]):
             print("Premature stop")
             break
@@ -526,7 +527,7 @@ def tune(params, epochs, arate, y_true, mods=[-1, -0.5, 0, 0.5, 1], param_rate_s
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-dataset = simulation_set()
+dataset = simulation_set2()
 print(list(dataset))
 
 x_columns = ['array_length', 'pattern_size', 'array_length', 'copy_number', 'error', 'ratio']
@@ -536,21 +537,21 @@ dataset_X = dataset[x_columns]
 dataset_y = dataset[y_columns]
 
 df_sub00 = dataset.loc[dataset['genotype'] == '0/0']
-df_sub01 = dataset.loc[dataset['genotype'] == '0/1']
+df_sub01 = dataset.loc[dataset['genotype'] == '0/-1']
 df_sub00 = df_sub00.append(df_sub01)
 
 train_X, test_X, train_y, test_y = train_test_split(
     df_sub00[["array_length", "ratio"]], df_sub00[["label"]], test_size=0.2
 )
 
-print(train_X.shape)
+# print(train_X.shape)
 
 y_actual = np.array([-1 if x == 0 else 1 for x in train_y.label])
-print(y_actual)
+# print(y_actual)
 
 string_construct = ""
 
-print("Dataset size:", len(train_X.ratio))
+# print("Dataset size:", len(train_X.ratio))
 
 # svm_slope = -a1 / a0
 # y_intercept = b / a0
@@ -559,16 +560,23 @@ print("Dataset size:", len(train_X.ratio))
 
 a0mod = 0. # 0.1
 a1mod = 0.
-bmod = -0.6 # 0.5 -> very good
+bmod = -0.2#-0.6 # 0.5 -> very good
 
 [[a0], [a1]] = [[4.2944555 + a0mod], [-0.03241278 + a1mod]] # [[4.329528], [-0.03381853]] b: [[-3.9912481]]
 [[b]] = [[-3.9100592 + bmod]]
 
+custom_mods = [-1., -0.5, -0.1, -0.05, -0.01, 0, 0.01, 0.05, 0.1, 0.5, 1.]
+params = tune([a1, a0, b], 25, 0.001, y_actual, mods=custom_mods, scale_forward=1, iter_to_complete=5)
+# params = [-0.026412781999999205, 4.303955496833334, -3.8960592046666624]
+
 # params = tune([a1, a0, b], 100, 0.0001, y_actual, scale_forward=1, iter_to_complete=5)
 # print("\nParams: " + str(params) + "\n")
 
-params = [-0.0328627799985, 4.295455499996667, -4.509059200003333]
+
+
+# params = [-0.0328627799985, 4.295455499996667, -4.509059200003333]
 # print("Dataset size: " + str(len(train_X.ratio)))
+print(params)
 
 output_results(y_actual,
                predict_from_tf_SVC(
