@@ -1,6 +1,89 @@
 import pandas as pd
 import numpy as np
 
+def simulation_set2():
+    hg_set = pd.read_csv("/Users/mkorovkin/Desktop/marzd/sim2_148bp.csv")
+
+    hg_set.drop("start", axis=1)
+    hg_set.drop("end", axis=1)
+
+    hg_set = hg_set.loc[hg_set["filter"] == "S"]
+    hg_set = hg_set.loc[hg_set["array_length"] < 15000]
+    hg_set = hg_set.loc[hg_set["pattern_size"] > 150]
+    hg_set = hg_set.loc[hg_set["left_flank"] > 0]
+    hg_set = hg_set.loc[hg_set["right_flank"] > 0]
+    hg_set = hg_set.loc[hg_set["inside_array"] > 0]
+
+    # Keep flanks static
+    lfm = hg_set.left_flank.mean()
+    rfm = hg_set.right_flank.mean()
+    # print("flanks", lfm, rfm)
+    hg_set["left_flank"] = hg_set.left_flank.apply(lambda x: lfm)
+    hg_set["right_flank"] = hg_set.right_flank.apply(lambda x: rfm)
+
+    # Calculate ratios
+    hg_set["ratio"] = hg_set.inside_array / (hg_set.left_flank + hg_set.right_flank)
+    hg_set["array_over_pattern"] = hg_set.array_length / hg_set.pattern_size
+    hg_set = hg_set.loc[hg_set["array_over_pattern"] < 10]
+
+    # prepare statistical data
+    sm = pd.read_csv("/Users/mkorovkin/Desktop/output_statistics_00_new.csv")
+    xs = np.arange(148 * 3, 148 * 40, 148)
+    ms = sm.mA148
+
+    zin = {
+        "-1/-1": "43466",
+        "1/1": "1",
+        "0/1": "0/1",
+        "0/-1": "0/-1",
+        "0/0": "0/0",
+    }
+    nex = {
+        "43466": -2,
+        "1": 2,
+        "0/1": 1,
+        "0/-1": -1,
+        "0/0": 0,
+    }
+
+    ven = {
+        "43466": 1,
+        "1": 1,
+        "0/1": 1,
+        "0/-1": 1,
+        "0/0": -1,
+    }
+
+    hg_set['label'] = hg_set.genotype.apply(lambda x: ven[x])
+
+    return hg_set
+
+def simulation_set2_drop():
+    hg_set = pd.read_csv("/Users/mkorovkin/Desktop/marzd/sim2_148bp.csv")
+
+    hg_set.drop("start", axis=1)
+    hg_set.drop("end", axis=1)
+
+    hg_set = hg_set.loc[hg_set["filter"] == "S"]
+    hg_set = hg_set.loc[hg_set["array_length"] < 15000]
+    hg_set = hg_set.loc[hg_set["pattern_size"] > 150]
+    hg_set = hg_set.loc[hg_set["left_flank"] > 0]
+    hg_set = hg_set.loc[hg_set["right_flank"] > 0]
+    hg_set = hg_set.loc[hg_set["inside_array"] > 0]
+
+    # Keep flanks static
+    lfm = hg_set.left_flank.mean()
+    rfm = hg_set.right_flank.mean()
+    # print("flanks", lfm, rfm)
+    hg_set["left_flank"] = hg_set.left_flank.apply(lambda x: lfm)
+    hg_set["right_flank"] = hg_set.right_flank.apply(lambda x: rfm)
+
+    # Calculate ratios
+    hg_set["ratio"] = hg_set.inside_array / (hg_set.left_flank + hg_set.right_flank)
+    hg_set["array_over_pattern"] = hg_set.array_length / hg_set.pattern_size
+    hg_set = hg_set.loc[hg_set["array_over_pattern"] < 10]
+
+    return hg_set
 
 def simulation_set():
     hg_set = pd.read_csv("/Users/mkorovkin/Desktop/marzd/sim2_148bp.csv")
@@ -107,14 +190,22 @@ def matthews(y, y_pred):
     return (TP * TN - FP * FN) / np.sqrt((TP + FP) * (TP + FN) * (TN + FP) * (TN + FN))
 
 def output_results(y_actual, preds):
+    label_list = ["Method"]
+    value_list = ["SVC with Korovkin loss function"]
+
     print("---{}---".format("Results"))
     for (yy, zz) in [(precision, "Precision"), (recall, "Recall"),
                      (specificity, "Specificity"), (false_positive_rate, "FPR"),
                      (false_negative_rate, "FNR"), (f_score, "F score"),
-                     (number_tp, "True positive count",), (number_fp, "False positive count"),
+                     (number_tp, "True positive count",), (number_fp, "False positive count"), (number_fn, "False negative count"),
                      (number_tn, "True negative count"), (matthews, "MCC")]:
-        print(zz + ": {}".format(yy(y_actual, preds)))
+        val = yy(y_actual, preds)
+        label_list.append(zz)
+        value_list.append(np.round(val, decimals=4))
 
+        print(zz + ": {}".format(val))
+
+    return label_list, value_list
 
 def predict_from_tf_SVCNeg(x_y_zip, params):
     slope = (-params[0] / params[1])
@@ -131,19 +222,42 @@ def predict_from_tf_SVCPos(x_y_zip, params):
     class_result = [1 if (x * slope + intercept < y) else -1 for (x, y) in x_y_zip]
     return np.array(class_result)
 
-dataset = simulation_set()
+def run_test(dataset):
+    x_columns = ['array_length', 'ratio']
+    y_columns = ['label']
 
-x_columns = ['array_length', 'ratio']
-y_columns = ['label']
+    dataset_X = dataset[x_columns]
+    dataset_y = dataset[y_columns]
 
-dataset_X = dataset[x_columns]
-dataset_y = dataset[y_columns]
+    params_neg = [-0.0254627823167, 4.308455495333334, -3.793559205499995]
+    params_pos = [-0.0338727795133, 4.294555499966664, -4.498059203999996]
 
-params_neg = [-0.0254627823167, 4.308455495333334, -3.793559205499995]
-params_pos = [-0.0338727795133, 4.294555499966664, -4.498059203999996]
+    preds_neg = predict_from_tf_SVCNeg(zip(np.array(dataset_X.array_length), np.array(dataset_X.ratio)), params_neg)
+    preds_pos = predict_from_tf_SVCPos(zip(np.array(dataset_X.array_length), np.array(dataset_X.ratio)), params_pos)
+    classification_list = [1 if (x == 1 or y == 1) else -1 for (x, y) in zip(preds_neg, preds_pos)]
 
-preds_neg = predict_from_tf_SVCNeg(zip(np.array(dataset_X.array_length), np.array(dataset_X.ratio)), params_neg)
-preds_pos = predict_from_tf_SVCPos(zip(np.array(dataset_X.array_length), np.array(dataset_X.ratio)), params_pos)
-classification_list = [1 if (x == 1 or y == 1) else -1 for (x, y) in zip(preds_neg, preds_pos)]
+    label_list, value_list = output_results(np.array(dataset_y.label), classification_list)
 
-output_results(np.array(dataset_y.label), classification_list)
+    const_string = "| "
+    for lab in label_list:
+        const_string += lab + " | "
+    const_string += "\n|"
+    for i in range(len(label_list)):
+        const_string += "---|"
+    const_string += "\n|"
+    for val in value_list:
+        const_string += str(val) + " | "
+
+    print(const_string)
+
+drop_train = False
+dataset1 = simulation_set2()
+
+if drop_train:
+    dataset2_TRID = np.array(simulation_set2_drop().index)
+
+    print("Pre-drop:", dataset1.shape)
+    dataset1 = dataset1.drop(dataset2_TRID, axis=0)
+    print("Post-drop:", dataset1.shape)
+
+run_test(dataset1)

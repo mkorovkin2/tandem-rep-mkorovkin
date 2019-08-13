@@ -257,3 +257,14 @@ Future steps:
 1. Try out different optimizers: ```tf.keras.optimizers.SGD```, ```MomentumOptimizer```
 2. Alter parameters and figure out how to specifically account for false positives in loss function
 3. Simplify loss function to preserve differentiability
+
+| Method | Precision | Recall | Specificity | FPR | FNR | F-score | TP count | FP count | FN count | TN count | MCC | 
+|---|---|---|---|---|---|---|---|---|---|---|---|
+|SVC with Korovkin loss function (only test dataset) | 0.9330 | 0.1692 | 0.9748 | 0.0252 | 0.8308 | 0.2864 | 668 | 48 | 3281 | 1857 | 0.2430 |
+|SVC with Korovkin loss function (train + test dataset) | 0.9536 | 0.3022 | 0.9697 | 0.0303 | 0.6978 | 0.4590 | 1501 | 73 | 3466 | 2337 | 0.3652 |
+|SVC with Korovkin loss function (only train dataset) | 0.9792 | 0.8320 | 0.9644 | 0.0356 | 0.1680 | 0.8996 | 847 | 18 | 171 | 487 | 0.8034 |
+
+#### Korovkin Cost Function
+![Specificity graph](specificity07.png)
+
+[PlotLy graph for ```READ_LENGTH=100```](https://plot.ly/~mkorovkin/23/read-length100-coverage1420-array-lengths-from-3005000/#/)

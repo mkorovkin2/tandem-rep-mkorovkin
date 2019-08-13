@@ -117,35 +117,6 @@ def round(array):
     return np.array([0 if x < 0.5 else 1 for x in array])
 
 def evaluate(y_test, y_pred):
-    '''false_negative = np.array([0 if x >= 0 else 1 for x in (round(y_pred) - y_test)]).sum()
-    false_positive = np.array([0 if x >= 0 else 1 for x in (y_test - round(y_pred))]).sum()
-    true_negative = np.array([0 if x > 0 else 1 for x in (y_test + round(y_pred))]).sum()
-    true_positive = np.array([0 if x <= 1 else 1 for x in (y_test + round(y_pred))]).sum()
-    size = len(y_pred)
-
-    # false_negative is what we don't want
-    recall = true_positive / (true_positive + false_negative)
-    specificity = true_negative / (true_negative + false_positive)
-    accuracy = (true_positive + true_negative) / (true_positive + false_positive + true_negative + false_negative)
-    precision = true_positive / (true_positive + false_positive)
-    matthews_correlation = (true_positive * true_negative - false_positive * false_negative) / np.sqrt(
-        (true_positive + false_positive) *
-        (true_positive + false_negative) *
-        (true_negative + false_positive) *
-        (true_negative + false_negative)
-    )
-    f_measure = 2 * true_positive / (2 * true_positive + false_negative + false_positive)
-
-    print("Total observations: {}\n---\n".format(size))
-    print("Recall: {}".format(recall))
-    print("Specificity: {}".format(specificity))
-    print("Accuracy: {}".format(accuracy))
-    print("Precision: {}".format(precision))
-    print("Matthews: {}".format(matthews_correlation))
-    print("F-measure: {}".format(f_measure))
-
-    print(pd.Series(y_pred).describe())'''
-
     y_pred = round(y_pred)#np.tanh(y_pred))
     # y_pred = round(y_pred)
 
@@ -159,27 +130,11 @@ def evaluate(y_test, y_pred):
 ###################################################### SVM IDEA ########################################################
 
 def run_linear_SVM(X_train, X_test, y_train, y_test, X_total, y_total, batch_size=96, alpha=0.01, C=1.0, d=0.01, d_penalty=1.0, bound_mod=1.0, lr=0.001, fp_penalty=1., epochs=100000):
-    # np.max(len(X_train) // 100, 96)
-
     x_data = tf.placeholder(shape=(None, 2), dtype=tf.float32)
     y_label = tf.placeholder(shape=(None, 1), dtype=tf.float32)
 
-    # [[a0], [a1]] = [[2.8582766], [-0.020608412]]
-    # [[b]] = [[-2.540259]]
-    #[[2.8826115], [-0.02194276]] /// [[2.8582766], [-0.022473007]]
-    #b: [[-2.5355039]] /// [[-2.540259]]
-
-    #>> A: [[ 2.8860528 ]
- #[-0.02145437]]
-#>> b: [[-2.5345695]]
-
-    #[[4.2944555 + a0mod], [-0.03241278 + a1mod]]
-    #[[b]] = [[-3.9100592 + bmod]]
-
-    A = tf.Variable([[4.2944555], [-0.03241278]])#[[4.2805715], [-0.032344025]])# [[2.8860528 ], [-0.02145437]])
-    #[[2.8826115], [-0.02194276]])#[[2.8582766], [-0.020608412]])#tf.divide(tf.random_normal(shape=[2, 1]), 10))
-    b = tf.Variable([[-3.9100592 - 0.6]])#[[-3.8925476]])# [[-2.5345695]])
-    #[[-2.5355039]])#[[-2.540259]])#tf.divide(tf.random_normal(shape=[1, 1]), 10))
+    A = tf.Variable([[4.2944555], [-0.03241278]])
+    b = tf.Variable([[-3.9100592 - 0.6]])
 
 
 
@@ -503,11 +458,8 @@ run_linear_SVM(X_train.values,
                batch_size=54,
                # alpha=0.01,
                C=10.0,
-               d=0.3, #-0.7, # -0.7,
-               # d_penalty=0.001,#1.0, # 100.0,
+               d=0.3,
+               # d_penalty=0.001,
                # bound_mod=1.0,
-               lr=0.001,#large batch0.01,#ProximalAdagrad - 0.001,# THIS IS FOR THE BATCH 256 - 0.000000001, # 0.0000001, # 0.0000000001,
-               # fp_penalty=100.0,
+               lr=0.001,
                epochs=100000)
-
-# problems coming from
